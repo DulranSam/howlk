@@ -6,21 +6,19 @@ import Axios from "axios";
 import { Link } from "react-router-dom";
 
 const Main = () => {
-  const { loading, setLoading, BASE, status, setStatus } =
-    useContext(UserContext);
+  const { loading, setLoading, BASE, status, setStatus } = useContext(UserContext);
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
 
-  async function fetch() {
+  async function fetchData() {
     try {
       setLoading(true);
       const response = await Axios.get(`${BASE}/mains`);
       if (response.status === 200) {
-        console.log(response.data);
         setData(response.data);
       }
     } catch (err) {
-      if (err.status === 404) {
+      if (err.response.status === 404) {
         setStatus("No results found!");
       } else {
         setStatus("Error!");
@@ -30,7 +28,7 @@ const Main = () => {
     }
   }
 
-  async function fetch2() {
+  async function fetchData2() {
     try {
       setLoading(true);
       const response = await Axios.get(`${BASE}/mains/sides`);
@@ -38,7 +36,7 @@ const Main = () => {
         setData2(response.data);
       }
     } catch (err) {
-      if (err.status === 404) {
+      if (err.response.status === 404) {
         setStatus("No results found!");
       } else {
         setStatus("Error!");
@@ -49,58 +47,56 @@ const Main = () => {
   }
 
   useEffect(() => {
-    fetch();
-    fetch2();
+    fetchData();
+    fetchData2();
   }, []);
 
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Welcome to How.LK</h1>
-      <div
-        style={{
-          marginTop: "120px",
-          marginLeft: "40px",
-          padding: "20px",
-        }}
-      >
+      <div style={{ marginTop: "120px", marginLeft: "40px", padding: "20px" }}>
         {loading ? (
           <h1>Loading...</h1>
         ) : (
           <div>
             <div className="featured">
               <h1>Featured</h1>
-              {data && data.length
-                ? data.map((x) => {
-                    <div key={x._id}>
-                      <h1>{x.heading}</h1>
-                      <div className="pre-Desc">
-                        <p>{x.preDesc}</p>
-                      </div>
-                      <div className="content">
-                        {x.content.map((x) => {
-                          return x;
-                        })}
-                      </div>
-                      <div className="post-Desc">
-                        <p>{x.postDesc}</p>
-                      </div>
-                      <p>{x.category}</p>
-                    </div>;
-                  })
-                : "No results found!"}
-              <Link
-                to={`/${"theID"}`}
-              >{`Click here to learn about ${"the name"}`}</Link>
+              {data && data.length ? (
+                data.map((x) => (
+                  <div key={x._id}>
+                    <h1>{x.heading}</h1>
+                    <div className="pre-Desc">
+                      <p>{x.preDesc}</p>
+                    </div>
+                    <div className="content">
+                      {x.content.map((item, index) => (
+                        <div key={index}>{item}</div>
+                      ))}
+                    </div>
+                    <div className="post-Desc">
+                      <p>{x.postDesc}</p>
+                    </div>
+                    <p>{x.category}</p>
+                    <Link to={`/${x._id}`}>{`Click here to learn about ${x.heading}`}</Link>
+                  </div>
+                ))
+              ) : (
+                <p>No results found!</p>
+              )}
             </div>
-
+            <div className="testing">{data && data.length && JSON.stringify(data)}</div>
             <div className="sides">
               <h1>Side Hustles</h1>
-              {data2 && data2.length
-                ? JSON.stringify(data2)
-                : "No results found!"}
-              <Link
-                to={`/${"theID"}`}
-              >{`Click here to learn about ${"the name"}`}</Link>
+              {data2 && data2.length ? (
+                data2.map((item, index) => (
+                  <div key={index}>
+                    {JSON.stringify(item)}
+                    <Link to={`/${item._id}`}>{`Click here to learn about ${item.heading}`}</Link>
+                  </div>
+                ))
+              ) : (
+                <p>No results found!</p>
+              )}
             </div>
           </div>
         )}

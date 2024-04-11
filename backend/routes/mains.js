@@ -63,21 +63,20 @@ Router.route("/adds").post(async (req, res) => {
   }
 });
 
-Router.route('/:id').post(async(req,res)=>{
-  const theID = req?.params?.id;
-  if(!theID) return res.status(400).json({Alert:"ID required"});
+Router.route("/:id").post(async (req, res) => {
+  const theSearch = req?.params?.search;
+  if (!theSearch) return res.status(400).json({ Alert: "ID required" });
 
-  try{
-    const theRequest = await startersModel.find({_id:theID})
-
-  }catch(err){
+  try {
+    const theRequest = await startersModel.find({ $match: search });
+    if (theRequest) {
+      res.status(200).json(theRequest);
+    } else {
+      res.status(404).json({ Alert: "No data found" });
+    }
+  } catch (err) {
     console.error(err);
   }
-  
-
-})
+});
 
 module.exports = Router;
-
-
-

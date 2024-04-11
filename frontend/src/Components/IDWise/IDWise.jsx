@@ -9,12 +9,12 @@ import Axios from "axios";
 const IDWise = () => {
   const { loading, setLoading, status, setStatus, BASE } =
     useContext(UserContext);
-  const { id } = useParams();
+  const { search } = useParams();
 
   async function FetchIDWise() {
     try {
       setLoading(true);
-      const response = await Axios.post(`${BASE}/mains/${id}`);
+      const response = await Axios.post(`${BASE}/mains/${search}`);
       if (response.status === 200) {
         //
         setStatus("Completed");
@@ -36,8 +36,8 @@ const IDWise = () => {
   return (
     <div>
       <div className="main-container">
-        <h1>ID Wise</h1>
-        <p>{id}</p>
+        <h1>Search</h1>
+        <p>{search}</p>
       </div>
       <p>{status}</p>
     </div>
