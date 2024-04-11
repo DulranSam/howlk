@@ -34,7 +34,7 @@ const Starters = () => {
   }, []);
 
   return (
-    <div style={{margin:"40px"}}>
+    <div style={{margin:"30px"}}>
       <h1>Starters</h1>
       <Link to={"/addContent"}>Add Resources</Link>
       {loading ? (

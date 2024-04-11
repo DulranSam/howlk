@@ -63,7 +63,7 @@ Router.route("/adds").post(async (req, res) => {
   }
 });
 
-Router.route("/:id").post(async (req, res) => {
+Router.route("/:search").post(async (req, res) => {
   const theSearch = req?.params?.search;
   if (!theSearch) return res.status(400).json({ Alert: "ID required" });
 

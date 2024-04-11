@@ -49,7 +49,7 @@ const AddCourses = () => {
   };
  
   return isLogged ? (
-    <div>
+    <div style={{textAlign:"center"}}>
       <h1>Add Courses</h1>
       <form onSubmit={AddCourses}>
         <input
