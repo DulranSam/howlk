@@ -24,7 +24,7 @@ Router.route("/sides").get(async (req, res) => {
     //needs to fetch from mains model
 
     const theData = await startersModel.find({
-      category: "sides",
+      category: "side",
     });
     if (theData && theData.length) {
       res.status(200).json(theData);
@@ -63,4 +63,21 @@ Router.route("/adds").post(async (req, res) => {
   }
 });
 
+Router.route('/:id').post(async(req,res)=>{
+  const theID = req?.params?.id;
+  if(!theID) return res.status(400).json({Alert:"ID required"});
+
+  try{
+    const theRequest = await startersModel.find({_id:theID})
+
+  }catch(err){
+    console.error(err);
+  }
+  
+
+})
+
 module.exports = Router;
+
+
+

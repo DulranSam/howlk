@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Main from "./Components/Main/Main";
@@ -8,13 +9,15 @@ import AddContent from "./Components/AddContent/AddContent";
 import Unknown from "./Components/Misc/Unknown";
 import Courses from "./Components/Courses/Courses";
 import AddCourses from "./Components/Courses/AddCourses.jsx/AddCourses";
+import IDWise from "./Components/IDWise/IDWise";
 export const UserContext = createContext();
 function App() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
   const [user, setUser] = useState({});
+  const [isLogged, setIsLogged] = useState(true);
 
-  const BASE = "http://localhost:8000"
+  const BASE = "http://localhost:8000";
 
   const theStates = {
     loading,
@@ -23,7 +26,9 @@ function App() {
     setStatus,
     user,
     setUser,
-    BASE
+    BASE,
+    isLogged,
+    setIsLogged,
   };
 
   return (
@@ -33,10 +38,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/starters" element={<Starters />}></Route>
-            <Route path="/addContent" element={<AddContent/>}></Route>
-            <Route path="/courses" element={<Courses/>}></Route>
-            <Route path="/addcourses" element={<AddCourses/>}></Route>
-            <Route path="*" element={<Unknown/>}></Route>
+            <Route path="/:id" element={<IDWise/>}></Route>
+            <Route path="/addContent" element={<AddContent />}></Route>
+            <Route path="/courses" element={<Courses />}></Route>
+            <Route path="/addcourses" element={<AddCourses />}></Route>
+            <Route path="*" element={<Unknown />}></Route>
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>

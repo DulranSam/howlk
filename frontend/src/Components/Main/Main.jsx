@@ -16,6 +16,7 @@ const Main = () => {
       setLoading(true);
       const response = await Axios.get(`${BASE}/mains`);
       if (response.status === 200) {
+        console.log(response.data);
         setData(response.data);
       }
     } catch (err) {
@@ -59,7 +60,7 @@ const Main = () => {
         style={{
           marginTop: "120px",
           marginLeft: "40px",
-          padding:"20px"
+          padding: "20px",
         }}
       >
         {loading ? (
@@ -68,20 +69,44 @@ const Main = () => {
           <div>
             <div className="featured">
               <h1>Featured</h1>
-              {data && data.length ? JSON.stringify(data) : "No results found!"}
+              {data && data.length
+                ? data.map((x) => {
+                    <div key={x._id}>
+                      <h1>{x.heading}</h1>
+                      <div className="pre-Desc">
+                        <p>{x.preDesc}</p>
+                      </div>
+                      <div className="content">
+                        {x.content.map((x) => {
+                          return x;
+                        })}
+                      </div>
+                      <div className="post-Desc">
+                        <p>{x.postDesc}</p>
+                      </div>
+                      <p>{x.category}</p>
+                    </div>;
+                  })
+                : "No results found!"}
+              <Link
+                to={`/${"theID"}`}
+              >{`Click here to learn about ${"the name"}`}</Link>
             </div>
+
             <div className="sides">
               <h1>Side Hustles</h1>
               {data2 && data2.length
                 ? JSON.stringify(data2)
                 : "No results found!"}
+              <Link
+                to={`/${"theID"}`}
+              >{`Click here to learn about ${"the name"}`}</Link>
             </div>
           </div>
         )}
         {/* <p>{status}</p> */}
         <Link to={"/addContent"}>Add Resources</Link>
       </div>
-      
     </div>
   );
 };

@@ -61,6 +61,7 @@ const Starters = () => {
                 ))
               : "No results found!"}
           </div>
+          <Link to={`/`}>{`Click here to go back to home`}</Link>
           {/* <p>{JSON.stringify(data)}</p> */}
         </div>
       )}

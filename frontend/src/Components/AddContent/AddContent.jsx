@@ -116,8 +116,8 @@ const AddContent = () => {
               defaultValue={"mains"}
               required
             >
-              <option value="mains">Mains</option>
-              <option value="sides">Sides</option>
+              <option value="main">Main</option>
+              <option value="side">Side</option>
             </select>
             <button type="submit" disabled={loading}>
               Add
