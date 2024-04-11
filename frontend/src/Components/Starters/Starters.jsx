@@ -51,9 +51,9 @@ const Starters = () => {
                     <p>{x.preDesc}</p>
                     <div className="content">
                       {x.content.map((iter, index) => (
-                        <div key={index}>
-                          <p>{iter}</p>
-                        </div>
+                        <ul key={index}>
+                          <li>{iter}</li>
+                        </ul>
                       ))}
                     </div>
                     <p>{x.postDesc}</p>

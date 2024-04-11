@@ -27,7 +27,7 @@ const startersSchema = new mongoose.Schema({
     required: true,
     min: 5,
     trim: true,
-    default: "mains",
+    default: "main",
   },
   niche:{
     //we should allow for niche implementation but for now it's fine
