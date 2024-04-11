@@ -77,7 +77,7 @@ const Main = () => {
                       <p>{x.postDesc}</p>
                     </div>
                     <p>{x.category}</p>
-                    <Link to={`/${x._id}`}>{`Click here to learn about ${x.heading}`}</Link>
+                    <Link to={`/search/${x.heading}`}>{`Click here to learn about ${x.heading}`}</Link>
                   </div>
                 ))
               ) : (
@@ -90,8 +90,9 @@ const Main = () => {
               {data2 && data2.length ? (
                 data2.map((item, index) => (
                   <div key={index}>
+                    <br/>
                     {JSON.stringify(item)}
-                    <Link to={`/${item._id}`}>{`Click here to learn about ${item.heading}`}</Link>
+                    <Link to={`/search/${item.heading}`}>{`Click here to learn about ${item.heading}`}</Link>
                   </div>
                 ))
               ) : (
