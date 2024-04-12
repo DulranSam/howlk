@@ -41,6 +41,7 @@ const Courses = () => {
               ? JSON.stringify(resources)
               : "No results found"}
           </div>
+          <p>{JSON.stringify(resources)}</p>
           <p>{status}</p>
           <Link to={"/addcourses"}>Add Courses</Link>
         </div>

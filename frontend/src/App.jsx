@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Main from "./Components/Main/Main";
 import Starters from "./Components/Starters/Starters";
-
 import { createContext, useState } from "react";
 import AddContent from "./Components/AddContent/AddContent";
 import Unknown from "./Components/Misc/Unknown";
@@ -40,7 +39,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/starters" element={<Starters />}></Route>
-            <Route path="/search/:search" element={<IDWise />}></Route>
+            {/* <Route path="/search/:search" element={<IDWise />}></Route> */}
             <Route path="/addContent" element={<AddContent />}></Route>
             <Route path="/courses" element={<Courses />}></Route>
             <Route path="/addcourses" element={<AddCourses />}></Route>

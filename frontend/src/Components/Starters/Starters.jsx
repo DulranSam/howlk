@@ -57,6 +57,7 @@ const Starters = () => {
                       ))}
                     </div>
                     <p>{x.postDesc}</p>
+                    <Link to={`/search/${x.heading}`}>{`Click here to learn more about ${x.heading}`}</Link>
                   </div>
                 ))
               : "No results found!"}

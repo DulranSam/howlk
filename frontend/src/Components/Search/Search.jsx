@@ -10,21 +10,22 @@ const Search = () => {
   const [outcome, setOutcome] = useState([]);
 
   let searchCounter = 0;
+
   async function SearchUp(e) {
-    setStatus("")
     e.preventDefault();
+    setStatus("");
     try {
       setLoading(true);
-      const request = await Axios.post(`${BASE}/search`,search);
-      if(request.status===200){
-        setOutcome(request.data)
+      const request = await Axios.post(`${BASE}/search`, search);
+      if (request.status === 200) {
+        setOutcome(request.data);
         setStatus("Searching!");
         searchCounter++;
       }
     } catch (err) {
-        if(err.status===404){
-            setStatus("No results found")
-        }
+      if (err.status === 404) {
+        setStatus("No results found");
+      }
       console.error(err);
     } finally {
       setLoading(false);
@@ -33,8 +34,6 @@ const Search = () => {
   }
 
   const searchRef = useRef();
-
-  useEffect(() => {}, []);
 
   return (
     <div>
@@ -56,9 +55,9 @@ const Search = () => {
       <div className="data">
         {outcome && outcome.length ? (
           JSON.stringify(outcome)
-        ) : searchCounter !==0 ? (
+        ) : searchCounter !== 0 ? (
           <h1>No results found</h1>
-        ) : null }
+        ) : null}
       </div>
       {/* <p>{status}</p> */}
     </div>
