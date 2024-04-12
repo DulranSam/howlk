@@ -37,9 +37,15 @@ const IDWise = () => {
     <div>
       <div className="main-container">
         <h1>Search</h1>
-        <p>{search}</p>
       </div>
-      <p>{status}</p>
+      {loading ? (
+        "Loading..."
+      ) : (
+        <div>
+          <p>{search}</p>
+          <p>{status}</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -70,28 +70,31 @@ const Main = () => {
                     </div>
                     <div className="content">
                       {x.content.map((item, index) => (
-                        <div key={index}>{item}</div>
+                        <ul key={index}><li>{item}</li></ul>
                       ))}
                     </div>
                     <div className="post-Desc">
                       <p>{x.postDesc}</p>
                     </div>
                     <p>{x.category}</p>
-                    <Link to={`/${x._id}`}>{`Click here to learn about ${x.heading}`}</Link>
+                    <Link to={`/search/${x.heading}`}>{`Click here to learn about ${x.heading}`}</Link>
                   </div>
                 ))
               ) : (
                 <p>No results found!</p>
               )}
             </div>
-            <div className="testing">{data && data.length && JSON.stringify(data)}</div>
-            <div className="sides">
+            <div className="sides" style={{marginTop:"60px"}}>
               <h1>Side Hustles</h1>
               {data2 && data2.length ? (
                 data2.map((item, index) => (
                   <div key={index}>
-                    {JSON.stringify(item)}
-                    <Link to={`/${item._id}`}>{`Click here to learn about ${item.heading}`}</Link>
+                    <h1>{item.heading}</h1>
+                    <p>{item.preDesc}</p>
+                    {item.content.map((x)=>{return x})}
+                    <p>{item.postDesc}</p>
+                    <p>{item.category}</p>
+                    <Link to={`/search/${item.heading}`}>{`Click here to learn about ${item.heading}`}</Link>
                   </div>
                 ))
               ) : (

@@ -10,6 +10,7 @@ import Unknown from "./Components/Misc/Unknown";
 import Courses from "./Components/Courses/Courses";
 import AddCourses from "./Components/Courses/AddCourses.jsx/AddCourses";
 import IDWise from "./Components/IDWise/IDWise";
+import Search from "./Components/Search/Search";
 export const UserContext = createContext();
 function App() {
   const [loading, setLoading] = useState(false);
@@ -35,10 +36,11 @@ function App() {
     <>
       <UserContext.Provider value={theStates}>
         <BrowserRouter>
+          <Search />
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/starters" element={<Starters />}></Route>
-            <Route path="/:search" element={<IDWise/>}></Route>
+            <Route path="/search/:search" element={<IDWise />}></Route>
             <Route path="/addContent" element={<AddContent />}></Route>
             <Route path="/courses" element={<Courses />}></Route>
             <Route path="/addcourses" element={<AddCourses />}></Route>

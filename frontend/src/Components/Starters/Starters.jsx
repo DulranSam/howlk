@@ -34,7 +34,7 @@ const Starters = () => {
   }, []);
 
   return (
-    <div style={{margin:"40px"}}>
+    <div style={{margin:"30px"}}>
       <h1>Starters</h1>
       <Link to={"/addContent"}>Add Resources</Link>
       {loading ? (
@@ -51,9 +51,9 @@ const Starters = () => {
                     <p>{x.preDesc}</p>
                     <div className="content">
                       {x.content.map((iter, index) => (
-                        <div key={index}>
-                          <p>{iter}</p>
-                        </div>
+                        <ul key={index}>
+                          <li>{iter}</li>
+                        </ul>
                       ))}
                     </div>
                     <p>{x.postDesc}</p>

@@ -69,7 +69,7 @@ const AddContent = () => {
 
   return (
     <div>
-      <div className="container">
+      <div className="container" style={{textAlign:"center"}}>
         <h1>Add Content</h1>
         {loading ? (
           <h1>Loading...</h1>
