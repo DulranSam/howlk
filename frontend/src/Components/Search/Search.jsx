@@ -7,7 +7,7 @@ const Search = () => {
   const { loading, setLoading, status, setStatus, BASE } =
     useContext(UserContext);
   const [search, setSearch] = useState("");
-  const [outcome, setOutcome] = useState([]);
+  const [outcome, setOutcome] = useState({});
 
   let searchCounter = 0;
 
@@ -16,10 +16,10 @@ const Search = () => {
     setStatus("");
     try {
       setLoading(true);
-      const request = await Axios.post(`${BASE}/search`, search);
+      const request = await Axios.post(`${BASE}/search`, {search});
       if (request.status === 200) {
         setOutcome(request.data);
-        setStatus("Searching!");
+        console.log(request.data);
         searchCounter++;
       }
     } catch (err) {
@@ -54,12 +54,12 @@ const Search = () => {
       </div>
       <div className="data">
         {outcome && outcome.length ? (
-          JSON.stringify(outcome)
+          outcome.Output
         ) : searchCounter !== 0 ? (
           <h1>No results found</h1>
         ) : null}
       </div>
-      {/* <p>{status}</p> */}
+      <p>{status}</p>
     </div>
   );
 };
