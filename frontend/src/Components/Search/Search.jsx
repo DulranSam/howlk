@@ -19,8 +19,7 @@ const Search = () => {
       const request = await Axios.post(`${BASE}/search`, {search});
       if (request.status === 200) {
         setOutcome(request.data);
-        console.log(request.data);
-        searchCounter++;
+        navigator(`/${search}`)
       }
     } catch (err) {
       if (err.status === 404) {

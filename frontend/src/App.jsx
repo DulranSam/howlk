@@ -41,7 +41,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/starters" element={<Starters />}></Route>
-            {/* <Route path="/search/:search" element={<IDWise />}></Route> */}
+            <Route path="/search/:search" element={<IDWise />}></Route>
             <Route path="/addContent" element={<AddContent />}></Route>
             <Route path="/courses" element={<Courses />}></Route>
             <Route path="/addcourses" element={<AddCourses />}></Route>
