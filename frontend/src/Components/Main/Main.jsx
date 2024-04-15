@@ -54,7 +54,7 @@ const Main = () => {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Welcome to How.LK</h1>
-      <div style={{ marginTop: "120px", marginLeft: "40px", padding: "20px" }}>
+      <div style={{ marginTop: "60px", marginLeft: "40px", padding: "20px" }}>
         {loading ? (
           <h1>Loading...</h1>
         ) : (
@@ -68,7 +68,7 @@ const Main = () => {
                     <div className="pre-Desc">
                       <p>{x.preDesc}</p>
                     </div>
-                    <div className="content">
+                    <div className="content" style={{listStyleType:"number"}}>
                       {x.content.map((item, index) => (
                         <ul key={index}><li>{item}</li></ul>
                       ))}
