@@ -15,7 +15,7 @@ const Search = () => {
     setStatus("");
     try {
       setLoading(true);
-      navigator(`/search/${search}`)
+      navigator(`/search/${search}`);
     } catch (err) {
       console.error(err);
     } finally {

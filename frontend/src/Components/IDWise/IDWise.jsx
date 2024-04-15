@@ -10,7 +10,7 @@ const IDWise = () => {
   const { loading, setLoading, status, setStatus, BASE } =
     useContext(UserContext);
   const { search } = useParams();
-  const [output, setOutput] = useState({});
+  const [Data, setData] = useState({});
 
   async function FetchIDWise() {
     try {
@@ -18,7 +18,7 @@ const IDWise = () => {
       const response = await Axios.post(`${BASE}/search/${search}`);
       console.log(response.data);
       if (response.status === 200) {
-        setOutput(response.data);
+        setData(response.data);
         console.log(response.data);
         //
       }
@@ -44,14 +44,15 @@ const IDWise = () => {
       ) : (
         <div>
           <div className="output">
-            {output && output.length ? (
-              output.Output
+            {Data && Data.length ? (
+              Data.Output
             ) : (
               <h1>No results found </h1>
             )}
           </div>
           <h1>{search}</h1>
           <p>{status}</p>
+          <p>{JSON.stringify(Data)}</p>
         </div>
       )}
     </div>
