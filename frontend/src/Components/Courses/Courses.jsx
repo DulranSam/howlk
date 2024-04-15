@@ -10,6 +10,7 @@ const Courses = () => {
 
   async function fetchCourses() {
     try {
+      setLoading(true);
       const outcome = await Axios.get(`${BASE}/courses`);
       if (outcome.status === 200) {
         setResources(outcome.data);
@@ -20,6 +21,8 @@ const Courses = () => {
         setStatus("No results found!");
       }
       console.error(err);
+    }finally{
+      setLoading(false);
     }
   }
 

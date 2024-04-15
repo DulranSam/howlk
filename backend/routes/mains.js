@@ -68,15 +68,19 @@ Router.route("/:search").post(async (req, res) => {
   if (!theSearch) return res.status(400).json({ Alert: "ID required" });
 
   try {
-    const theRequest = await startersModel.find({ $match: search });
-    if (theRequest) {
+    const theRequest = await startersModel.aggregate([
+      { $match: { fieldName: theSearch } } // Replace fieldName with the actual field name you want to match against
+    ]);
+    if (theRequest.length > 0) {
       res.status(200).json(theRequest);
     } else {
       res.status(404).json({ Alert: "No data found" });
     }
   } catch (err) {
     console.error(err);
+    res.status(500).json({ Alert: "Internal Server Error" });
   }
 });
+
 
 module.exports = Router;

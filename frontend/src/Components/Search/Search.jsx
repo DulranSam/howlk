@@ -2,6 +2,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../App";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const { loading, setLoading, status, setStatus, BASE } =
@@ -10,17 +11,14 @@ const Search = () => {
   const [outcome, setOutcome] = useState({});
 
   let searchCounter = 0;
+  const navigator = useNavigate();
 
   async function SearchUp(e) {
     e.preventDefault();
     setStatus("");
     try {
       setLoading(true);
-      const request = await Axios.post(`${BASE}/search`, {search});
-      if (request.status === 200) {
-        setOutcome(request.data);
-        navigator(`/${search}`)
-      }
+      navigator(`/search/${search}`)
     } catch (err) {
       if (err.status === 404) {
         setStatus("No results found");
