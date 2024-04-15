@@ -77,7 +77,7 @@ const Main = () => {
                       <p>{x.postDesc}</p>
                     </div>
                     <p>{x.category}</p>
-                    <Link to={`/search/${x.heading}`}>{`Click here to learn about ${x.heading}`}</Link>
+                    {/* <Link to={`/search/${x.heading}`}>{`Click here to learn about ${x.heading}`}</Link> */}
                   </div>
                 ))
               ) : (
@@ -94,7 +94,7 @@ const Main = () => {
                     {item.content.map((x)=>{return x})}
                     <p>{item.postDesc}</p>
                     <p>{item.category}</p>
-                    <Link to={`/search/${item.heading}`}>{`Click here to learn about ${item.heading}`}</Link>
+                    {/* <Link to={`/search/${item.heading}`}>{`Click here to learn about ${item.heading}`}</Link> */}
                   </div>
                 ))
               ) : (

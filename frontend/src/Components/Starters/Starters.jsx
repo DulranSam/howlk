@@ -57,12 +57,12 @@ const Starters = () => {
                       ))}
                     </div>
                     <p>{x.postDesc}</p>
-                    <Link to={`/search/${x.heading}`}>{`Click here to learn more about ${x.heading}`}</Link>
+                    {/* <Link to={`/search/${x.heading}`}>{`Click here to learn more about ${x.heading}`}</Link> */}
                   </div>
                 ))
               : "No results found!"}
           </div>
-          <Link to={`/`}>{`Click here to go back to home`}</Link>
+          {/* <Link to={`/`}>{`Click here to go back to home`}</Link> */}
           {/* <p>{JSON.stringify(data)}</p> */}
         </div>
       )}

@@ -10,6 +10,7 @@ import Courses from "./Components/Courses/Courses";
 import AddCourses from "./Components/Courses/AddCourses.jsx/AddCourses";
 import IDWise from "./Components/IDWise/IDWise";
 import Search from "./Components/Search/Search";
+import Navbar from "./Components/Nav/Navbar";
 export const UserContext = createContext();
 function App() {
   const [loading, setLoading] = useState(false);
@@ -36,6 +37,7 @@ function App() {
       <UserContext.Provider value={theStates}>
         <BrowserRouter>
           <Search />
+          <Navbar/>
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/starters" element={<Starters />}></Route>
