@@ -4,8 +4,8 @@ require("dotenv").config();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const geminiKey = process.env.GEMINI_KEY;
 
-Router.route("/").post(async (req, res) => {
-  const { search } = req?.body;
+Router.route("/:search").post(async (req, res) => {
+  const { search } = req?.params;
 
   if (!search) {
     return res.status(400).json({ error: "Search parameter is missing" });

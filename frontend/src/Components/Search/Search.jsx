@@ -8,9 +8,6 @@ const Search = () => {
   const { loading, setLoading, status, setStatus, BASE } =
     useContext(UserContext);
   const [search, setSearch] = useState("");
-  const [outcome, setOutcome] = useState({});
-
-  let searchCounter = 0;
   const navigator = useNavigate();
 
   async function SearchUp(e) {
@@ -20,9 +17,6 @@ const Search = () => {
       setLoading(true);
       navigator(`/search/${search}`)
     } catch (err) {
-      if (err.status === 404) {
-        setStatus("No results found");
-      }
       console.error(err);
     } finally {
       setLoading(false);
@@ -48,13 +42,6 @@ const Search = () => {
             Search
           </button>
         </form>
-      </div>
-      <div className="data">
-        {outcome && outcome.length ? (
-          outcome.Output
-        ) : searchCounter !== 0 ? (
-          <h1>No results found</h1>
-        ) : null}
       </div>
       <p>{status}</p>
     </div>
