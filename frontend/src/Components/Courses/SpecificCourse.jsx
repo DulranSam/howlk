@@ -38,6 +38,7 @@ const SpecificCourse = () => {
       <div className="sub">
         {loading ? <h1>Loading...</h1> : <h1>{theCourse}</h1>}
       </div>
+      <h2>{theCourse}</h2>
       <h1>{status}</h1>
     </div>
   );

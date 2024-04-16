@@ -50,7 +50,7 @@ const Courses = () => {
               <p>No results found</p>
             )}
           </div>
-          <p>{status}</p>
+       
           <Link to={"/addcourses"}>Add Courses</Link>
         </div>
       )}
