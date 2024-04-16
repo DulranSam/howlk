@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import "./Start.css";
 
 const Starters = () => {
   const { loading, setLoading, BASE, status, setStatus } =
@@ -34,7 +35,7 @@ const Starters = () => {
   }, []);
 
   return (
-    <div style={{margin:"30px"}}>
+    <div style={{ margin: "30px" }}>
       <h1>Starters</h1>
       <Link to={"/addContent"}>Add Resources</Link>
       {loading ? (
@@ -45,7 +46,15 @@ const Starters = () => {
             <h1>Featured</h1>
             {data && data.length
               ? data.map((x) => (
-                  <div key={x._id} className="" style={{marginTop:"120px",marginLeft:"40px",marginBottom:"40px"}}>
+                  <div
+                    key={x._id}
+                    className=""
+                    style={{
+                      marginTop: "120px",
+                      marginLeft: "40px",
+                      marginBottom: "40px",
+                    }}
+                  >
                     <h1>{x.heading}</h1>
                     <h2>{x.category}</h2>
                     <p>{x.preDesc}</p>
@@ -66,7 +75,6 @@ const Starters = () => {
           {/* <p>{JSON.stringify(data)}</p> */}
         </div>
       )}
-      <p>{status}</p>
     </div>
   );
 };

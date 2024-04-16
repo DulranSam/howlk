@@ -15,6 +15,19 @@ Router.route("/").get(async (req, res) => {
   }
 });
 
+Router.route("/:courses").post(async (req,res)=>{
+
+  const theID = req.params.courses;
+  if(!theID) return res.status(400).json({Alert:"ID Required"})
+  
+  try{
+    
+
+  }catch(err){
+    console.error(err);
+  }
+})
+
 Router.route("/add").post(async (req, res) => {
   const { title, courses, videoUrl } = req?.body;
   if (!title || !courses)

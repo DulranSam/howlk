@@ -11,6 +11,7 @@ import AddCourses from "./Components/Courses/AddCourses.jsx/AddCourses";
 import IDWise from "./Components/IDWise/IDWise";
 import Search from "./Components/Search/Search";
 import Navbar from "./Components/Nav/Navbar";
+import SpecificCourse from "./Components/Courses/SpecificCourse";
 export const UserContext = createContext();
 function App() {
   const [loading, setLoading] = useState(false);
@@ -44,6 +45,7 @@ function App() {
             <Route path="/search/:search" element={<IDWise />}></Route>
             <Route path="/addContent" element={<AddContent />}></Route>
             <Route path="/courses" element={<Courses />}></Route>
+            <Route path="/courses/:theCourse" element={<SpecificCourse/>}></Route>
             <Route path="/addcourses" element={<AddCourses />}></Route>
             <Route path="*" element={<Unknown />}></Route>
           </Routes>

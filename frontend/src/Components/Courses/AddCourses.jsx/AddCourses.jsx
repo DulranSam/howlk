@@ -48,6 +48,7 @@ const AddCourses = () => {
     setCourseRelated({ ...courseRelated, [e.target.name]: e.target.value });
   };
  
+  {/**Course system is complex leave for last */}
   return isLogged ? (
     <div style={{textAlign:"center"}}>
       <h1>Add Courses</h1>

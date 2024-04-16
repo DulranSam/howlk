@@ -43,7 +43,7 @@ const Search = () => {
           </button>
         </form>
       </div>
-      <p>{status}</p>
+      {/* <p>{status}</p> */}
     </div>
   );
 };
