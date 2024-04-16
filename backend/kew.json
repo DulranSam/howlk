@@ -1,0 +1,83 @@
+[
+    {
+      "heading": "Introduction to JavaScript",
+      "preDesc": "JavaScript is a versatile programming language...",
+      "content": ["JavaScript is used for both client-side and server-side programming."],
+      "postDesc": "Learning JavaScript opens up a world of possibilities...",
+      "category": "programming",
+      "niche": ""
+    },
+    {
+      "heading": "Healthy Eating Habits",
+      "preDesc": "Maintaining a balanced diet is essential for overall health...",
+      "content": ["Include plenty of fruits and vegetables in your meals."],
+      "postDesc": "Adopting healthy eating habits can improve your quality of life...",
+      "category": "health",
+      "niche": ""
+    },
+    {
+      "heading": "Traveling on a Budget",
+      "preDesc": "Traveling can be expensive, but with careful planning...",
+      "content": ["Consider staying in hostels or using homestay services."],
+      "postDesc": "Traveling on a budget allows you to see more of the world...",
+      "category": "travel",
+      "niche": ""
+    },
+    {
+      "heading": "Effective Time Management",
+      "preDesc": "Time management is crucial for productivity...",
+      "content": ["Prioritize tasks based on importance and urgency."],
+      "postDesc": "Mastering time management leads to greater efficiency...",
+      "category": "productivity",
+      "niche": ""
+    },
+    {
+      "heading": "Beginner's Guide to Yoga",
+      "preDesc": "Yoga is an ancient practice that offers numerous benefits...",
+      "content": ["Start with simple poses and gradually advance."],
+      "postDesc": "Regular yoga practice improves flexibility, strength, and mental clarity...",
+      "category": "fitness",
+      "niche": ""
+    },
+    {
+      "heading": "Tips for Effective Communication",
+      "preDesc": "Communication skills are vital in personal and professional life...",
+      "content": ["Listen actively to understand others' perspectives."],
+      "postDesc": "Improving communication leads to better relationships and career success...",
+      "category": "self-improvement",
+      "niche": ""
+    },
+    {
+      "heading": "DIY Home Décor Ideas",
+      "preDesc": "Personalizing your living space adds warmth and character...",
+      "content": ["Repurpose old furniture for a unique touch."],
+      "postDesc": "Get creative with DIY home décor projects to reflect your style...",
+      "category": "home-improvement",
+      "niche": ""
+    },
+    {
+      "heading": "Basics of Photography",
+      "preDesc": "Photography is a popular hobby and profession...",
+      "content": ["Understand the exposure triangle: aperture, shutter speed, and ISO."],
+      "postDesc": "Mastering photography techniques allows you to capture memorable moments...",
+      "category": "art",
+      "niche": ""
+    },
+    {
+      "heading": "Starting a Small Business",
+      "preDesc": "Entrepreneurship offers opportunities for independence and growth...",
+      "content": ["Research your target market and competition."],
+      "postDesc": "Launching a successful small business requires dedication and strategic planning...",
+      "category": "business",
+      "niche": ""
+    },
+    {
+      "heading": "Mindfulness Meditation Practices",
+      "preDesc": "Mindfulness meditation cultivates awareness and presence...",
+      "content": ["Focus on your breath to anchor yourself in the present moment."],
+      "postDesc": "Regular mindfulness practice enhances emotional well-being and reduces stress...",
+      "category": "mindfulness",
+      "niche": ""
+    }
+  ]
+  

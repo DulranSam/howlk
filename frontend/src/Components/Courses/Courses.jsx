@@ -43,7 +43,7 @@ const Courses = () => {
                 <div key={x._id} className="comp" style={{margin:"40px",paddingTop:"60px"}}>
                   <h1>{x.title}</h1>
                   <h2>{x.description}</h2>
-                  <Link to={x.videoUrl}>{`Learn more about ${x.title}`}</Link>
+                  <Link to={`${x.title}`}>{`Learn more about ${x.title}`}</Link>
                 </div>
               ))
             ) : (
