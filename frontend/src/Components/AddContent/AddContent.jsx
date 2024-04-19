@@ -12,7 +12,7 @@ const AddContent = () => {
     preDesc: "",
     content: [],
     postDesc: "",
-    category: "mains",
+    category: "main",
   });
 
   const navigator = useNavigate();
@@ -113,7 +113,7 @@ const AddContent = () => {
             <select
               onChange={handleChange}
               name="category"
-              defaultValue={"mains"}
+              defaultValue={"main"}
               required
             >
               <option value="main">Main</option>

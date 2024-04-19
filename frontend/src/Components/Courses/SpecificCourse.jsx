@@ -14,7 +14,9 @@ const SpecificCourse = () => {
   async function SpecificallyCourses() {
     try {
       setLoading(true);
-      const response = await Axios.post(`${BASE}/courses/theCourse`,{theID:theCourse}); //2nd route in courses.js
+      const response = await Axios.post(`${BASE}/courses/theCourse`, {
+        theID: theCourse,
+      }); //2nd route in courses.js
       if (response.status === 200) {
         setCourseData(response.data);
         setStatus("Done!");
@@ -30,7 +32,6 @@ const SpecificCourse = () => {
       setLoading(false);
     }
   }
-  
 
   useEffect(() => {
     SpecificallyCourses();

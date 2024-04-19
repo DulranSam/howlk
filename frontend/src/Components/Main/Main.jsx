@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./Main.css";
 
 const Main = () => {
-  const { loading, setLoading, BASE, status, setStatus } = useContext(UserContext);
+  const { loading, setLoading, BASE, status, setStatus,admin } = useContext(UserContext);
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
 
@@ -53,8 +53,10 @@ const Main = () => {
 
   return (
     <div className="container">
+             
       <h1 className="title">Welcome to How.LK</h1>
       <div className="content-container">
+      <Link to={ admin && "/addContent"} className="add-resources-link">Add Resources</Link>
         {loading ? (
           <h1>Loading...</h1>
         ) : (
@@ -104,7 +106,7 @@ const Main = () => {
           </div>
         )}
         {/* <p>{status}</p> */}
-        <Link to={"/addContent"} className="add-resources-link">Add Resources</Link>
+ 
       </div>
     </div>
   );
