@@ -1,0 +1,10 @@
+{
+    "title": "Introduction to JavaScript",
+    "description": "This course provides a comprehensive introduction to JavaScript programming language. It covers fundamental concepts such as variables, data types, control structures, functions, and more.",
+    "videos": [
+      "https://example.com/video1",
+      "https://example.com/video2",
+      "https://example.com/video3"
+    ]
+  }
+  

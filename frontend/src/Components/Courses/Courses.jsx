@@ -5,7 +5,7 @@ import { UserContext } from "../../App";
 import { Link } from "react-router-dom";
 
 const Courses = () => {
-  const { loading, setLoading, status, setStatus, BASE } = useContext(UserContext);
+  const { loading, setLoading, status, setStatus, BASE,admin } = useContext(UserContext);
   const [resources, setResources] = useState([]);
 
   async function fetchCourses() {
@@ -37,6 +37,7 @@ const Courses = () => {
         <h1>Loading...</h1>
       ) : (
         <div>
+                  {admin &&  <Link to={"/addcourses"}>Add Courses</Link>}
           <div className="data">
             {resources && resources.length > 0 ? (
               resources.map((x) => (
@@ -51,7 +52,7 @@ const Courses = () => {
             )}
           </div>
        
-          <Link to={"/addcourses"}>Add Courses</Link>
+ 
         </div>
       )}
     </div>

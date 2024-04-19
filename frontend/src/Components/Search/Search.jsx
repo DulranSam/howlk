@@ -5,9 +5,10 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Search = () => {
-  const { loading, setLoading, status, setStatus, BASE } =
+  const { loading, setLoading, status, setStatus, BASE, toggle, setToggle } =
     useContext(UserContext);
   const [search, setSearch] = useState("");
+
   const navigator = useNavigate();
 
   async function SearchUp(e) {
@@ -27,24 +28,27 @@ const Search = () => {
   const searchRef = useRef();
 
   return (
-    <div>
-      <div className="search">
-        <form onSubmit={SearchUp}>
-          <input
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-            placeholder="Search..."
-            type="text"
-            ref={searchRef}
-          ></input>
-          <button type="submit" disabled={loading}>
-            Search
-          </button>
-        </form>
-      </div>
+    <>
+      <button onClick={()=>{setToggle(!toggle)}}>{toggle ? "Close Bot" : "Open bot"}</button>
+      {toggle && (
+        <div className="search">
+          <form onSubmit={SearchUp}>
+            <input
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+              placeholder="Ask Gemini... "
+              type="text"
+              ref={searchRef}
+            ></input>
+            <button type="submit" disabled={loading}>
+              Search
+            </button>
+          </form>
+        </div>
+      )}
       {/* <p>{status}</p> */}
-    </div>
+    </>
   );
 };
 

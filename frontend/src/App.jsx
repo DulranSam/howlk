@@ -19,6 +19,8 @@ function App() {
   const [status, setStatus] = useState("");
   const [user, setUser] = useState({});
   const [isLogged, setIsLogged] = useState(true);
+  const [toggle, setToggle] = useState(false);
+  const [admin,setAdmin]  =useState(true)
 
   const BASE = "http://localhost:8000";
 
@@ -32,6 +34,9 @@ function App() {
     BASE,
     isLogged,
     setIsLogged,
+    toggle,
+    setToggle,
+    admin,setAdmin
   };
 
   return (
