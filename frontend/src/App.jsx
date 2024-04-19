@@ -20,7 +20,7 @@ function App() {
   const [user, setUser] = useState({});
   const [isLogged, setIsLogged] = useState(true);
   const [toggle, setToggle] = useState(false);
-  const [admin,setAdmin]  =useState(true)
+  const [admin,setAdmin]  =useState(false)
 
   const BASE = "http://localhost:8000";
 
@@ -47,7 +47,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Main />}></Route>
-            <Route path="/starters" element={<Starters />}></Route>
+            {/* <Route path="/starters" element={<Starters />}></Route> */}
             <Route path="/search/:search" element={<IDWise />}></Route>
             <Route path="/addContent" element={<AddContent />}></Route>
             <Route path="/courses" element={isLogged && <Courses />}></Route>
