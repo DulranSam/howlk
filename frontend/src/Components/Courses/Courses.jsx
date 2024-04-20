@@ -51,8 +51,6 @@ const Courses = () => {
               <p>No results found</p>
             )}
           </div>
-       
- 
         </div>
       )}
     </div>
