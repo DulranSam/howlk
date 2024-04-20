@@ -34,17 +34,20 @@ Router.route("/:search").post(async (req, res) => {
 });
 
 Router.route("/").post(async (req, res) => {
-  const {within}  = req?.body
+  const { within } = req.body;
+  if (!within) return res.status(400).json({ Alert: "Query required" });
   try {
-    if(within){
-      console.log(`Received ${String(within)}`)
-      return res.status(200).json({Alert:"The data back"});
-    }else{
-      return res.status(404).json({Alert:"No results found"});
+    const response = await mainModel.aggregate([{ $match: { within } }]);
+    if (response && response.length) {
+      return res.status(200).json(response);
+    } else {
+      return res.status(404).json({ Alert: "No results found" });
     }
   } catch (err) {
     console.error(err);
+    return res.status(500).json({ Alert: "Internal Server Error" });
   }
 });
+
 
 module.exports = Router;
