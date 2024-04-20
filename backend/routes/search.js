@@ -3,6 +3,7 @@ const Router = express.Router();
 require("dotenv").config();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const geminiKey = process.env.GEMINI_KEY;
+const mainModel = require("../models/mains")
 
 Router.route("/:search").post(async (req, res) => {
   const { search } = req?.params;
@@ -29,6 +30,20 @@ Router.route("/:search").post(async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+Router.route("/").post(async (req, res) => {
+  const {within}  = req?.body
+  try {
+    if(within){
+      console.log(`Received ${String(within)}`)
+      return res.status(200).json({Alert:"The data back"});
+    }else{
+      return res.status(404).json({Alert:"No results found"});
+    }
+  } catch (err) {
+    console.error(err);
   }
 });
 

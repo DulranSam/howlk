@@ -40,7 +40,7 @@ const SpecificCourse = () => {
   return (
     <div>
       <div className="sub">
-        {/* {loading ? <h1>Loading...</h1> : <h1>{theCourse}</h1>} */}
+        {loading ? <h1>Loading...</h1> : <h1>{theCourse}</h1>}
       </div>
       <h2>{theCourse}</h2>
       <div className="container">
@@ -50,6 +50,7 @@ const SpecificCourse = () => {
           <h1>No results found</h1>
         )}
       </div>
+      <h2>{status}</h2>
     </div>
   );
 };

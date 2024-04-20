@@ -12,6 +12,8 @@ import IDWise from "./Components/IDWise/IDWise";
 import Search from "./Components/Search/Search";
 import Navbar from "./Components/Nav/Navbar";
 import SpecificCourse from "./Components/Courses/SpecificCourse";
+import SearchWithin from "./Components/Search/SearchWithin";
+import SearchedUp from "./Components/Search/SearchedUp";
 export const UserContext = createContext();
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
   const [user, setUser] = useState({});
   const [isLogged, setIsLogged] = useState(true);
   const [toggle, setToggle] = useState(false);
-  const [admin,setAdmin]  =useState(false)
+  const [admin,setAdmin]  =useState(true)
 
   const BASE = "http://localhost:8000";
 
@@ -44,6 +46,7 @@ function App() {
       <UserContext.Provider value={theStates}>
         <BrowserRouter>
           <Search />
+          <SearchWithin/>
           <Navbar />
           <Routes>
             <Route path="/" element={<Main />}></Route>
@@ -54,6 +57,10 @@ function App() {
             <Route
               path="/courses/:theCourse"
               element={<SpecificCourse />}
+            ></Route>
+                <Route
+              path="/searched/:within"
+              element={<SearchedUp />}
             ></Route>
             <Route path="/addcourses" element={<AddCourses />}></Route>
             <Route path="*" element={<Unknown />}></Route>
