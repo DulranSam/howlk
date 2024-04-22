@@ -2,6 +2,7 @@ const express = require("express");
 const Router = express.Router();
 const userModel = require("../models/user");
 const { Hashing } = require("../security/hashing");
+const bcrypt = require("bcrypt")
 
 Router.route("/").post(async (req, res) => {
   const { username, password } = req.body; // Removed optional chaining, it's unnecessary here
@@ -15,10 +16,11 @@ Router.route("/").post(async (req, res) => {
       return res.status(400).json({ Alert: "Username already taken" });
     } else {
       // Hash the password
-      const hashedPassword = new Hashing(password);
+      // const hashedPassword = new Hashing(password);
+      const hashPWD = bcrypt.hashSync(password,Math.random());
 
       // Create the new user
-      const newUser = await userModel.create({ username, password: hashedPassword });
+      const newUser = await userModel.create({ username, password: hashPWD });
       
       // Respond with success message
       return res.status(201).json({ Alert: `${newUser.username} Created` });

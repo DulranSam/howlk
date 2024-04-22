@@ -21,7 +21,7 @@ Router.route("/:search").post(async (req, res) => {
 
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     const result = await model.generateContent(search);
-    const response = await result?.response?.text(); // Check for response existence
+    const response = result?.response?.text(); // Check for response existence
     if (response) {
       res.status(200).json({ Output: response });
     } else {

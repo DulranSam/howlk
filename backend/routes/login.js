@@ -2,6 +2,7 @@ const express = require("express");
 const Router = express.Router();
 const userModel = require("../models/user");
 const { ComparePasswords } = require("../security/hashing");
+const bcrypt = require("bcrypt")
 
 Router.route("/").post(async (req, res) => {
   const { username, password } = req.body; // Removed optional chaining, not needed here
@@ -16,9 +17,10 @@ Router.route("/").post(async (req, res) => {
     }
 
     // Compare the provided password with the stored hashed password
-    const passwordMatch = await ComparePasswords(password, user.password);
+    // const passwordMatch = await ComparePasswords(password, user.password);
+    const passwordMatch = bcrypt.compareSync(password,user.password)
     if (passwordMatch) {
-      return res.status(200).json({ Alert: `${username} has logged in!` });
+      return res.status(200).json({ user });
     } else {
       return res.status(401).json({ Alert: "Unauthorized" });
     }

@@ -1,20 +1,14 @@
 const bcrypt = require("bcrypt");
 
 class Hashing {
-  constructor(password) {
-    const hashedPWD = bcrypt.hashSync(password, Math.random());
-    return hashedPWD;
+  static hashPassword(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   }
 }
 
 class Authenticate {
-  constructor(pass, savedPass) {
-    const passwordAuth = bcrypt.compareSync(pass, savedPass);
-    if (passwordAuth) {
-      return true;
-    } else {
-      return false;
-    }
+  static comparePassword(plainPassword, hashedPassword) {
+    return bcrypt.compareSync(plainPassword, hashedPassword);
   }
 }
 

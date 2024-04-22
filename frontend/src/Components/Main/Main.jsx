@@ -71,9 +71,9 @@ const Main = () => {
       </h1>
 
       <div className="content-container">
-        <Link to={admin && "/addContent"} className="add-resources-link">
+        {admin && <Link to={"/addContent"} className="add-resources-link">
           Add Resources
-        </Link>
+        </Link>}
         {loading ? (
           <h1>Loading...</h1>
         ) : (

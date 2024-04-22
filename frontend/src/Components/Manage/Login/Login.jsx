@@ -16,9 +16,11 @@ const Login = () => {
       setLoading(true);
       await Axios.post(`${BASE}/login`, creds).then((response) => {
         if (response.status === 200) {
-          setUser(response.data);
+          console.log(response.data.user.username);
+          setUser(response?.data?.user);
           setIsLogged(true);
           setStatus(`${user.username} Logged in!`)
+        
           setTimeout(()=>{
             navigator("/");
           },1200);
