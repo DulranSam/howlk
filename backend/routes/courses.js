@@ -22,7 +22,7 @@ Router.route("/theCourse").post(async (req, res) => {
   if (!theID) return res.status(400).json({ Alert: "ID Required" });
 
   try {
-    const data = await theCourse.findOne({title:theID})
+    const data = await theCourse.aggregate([{$match:{title:theID}}]);
     if (data && data.length > 0) {
       res.status(200).json(data[0]);
     } else {

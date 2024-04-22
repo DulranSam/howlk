@@ -1,12 +1,11 @@
 const express = require("express");
 const Router = express.Router();
-const startersModel = require("../models/starters");
+const mainModel = require("../models/mains");
+const readMore = require("../models/readMore");
 
 Router.route("/").get(async (req, res) => {
   try {
-    //needs to fetch from mains model
-
-    const theData = await startersModel.find({
+    const theData = await mainModel.find({
       category: "main",
     });
     if (theData && theData.length) {
@@ -21,9 +20,7 @@ Router.route("/").get(async (req, res) => {
 
 Router.route("/sides").get(async (req, res) => {
   try {
-    //needs to fetch from mains model
-
-    const theData = await startersModel.find({
+    const theData = await mainModel.find({
       category: "side",
     });
     if (theData && theData.length) {
@@ -44,9 +41,9 @@ Router.route("/adds").post(async (req, res) => {
   } else {
     try {
       //needs to fetch from mains model
-      const conflictHeading = await startersModel.findOne({ heading });
+      const conflictHeading = await mainModel.findOne({ heading });
       if (!conflictHeading) {
-        await startersModel.create({
+        await mainModel.create({
           heading,
           preDesc,
           content,
@@ -63,13 +60,29 @@ Router.route("/adds").post(async (req, res) => {
   }
 });
 
+Router.route("/read").post(async (req, res) => {
+  const { more } = req.body;
+  try {
+    const data = await readMore.findOne({ title: more });
+    if (data && data.length) {
+      return res.status(200).json(data);
+    } else {
+      return res.status(404).json({ Alert: "No results found" });
+    }
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+
+
 Router.route("/:search").post(async (req, res) => {
   const theSearch = req?.params?.search;
   if (!theSearch) return res.status(400).json({ Alert: "ID required" });
 
   try {
-    const theRequest = await startersModel.aggregate([
-      { $match: { fieldName: theSearch } } // Replace fieldName with the actual field name you want to match against
+    const theRequest = await mainModel.aggregate([
+      { $match: theSearch }, // Replace fieldName with the actual field name you want to match against
     ]);
     if (theRequest.length > 0) {
       res.status(200).json(theRequest);
@@ -81,6 +94,5 @@ Router.route("/:search").post(async (req, res) => {
     res.status(500).json({ Alert: "Internal Server Error" });
   }
 });
-
 
 module.exports = Router;

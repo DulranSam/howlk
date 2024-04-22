@@ -56,7 +56,7 @@ const Main = () => {
     <div className="container">
       <h1 className="title">
         {user?.username ? (
-         <h3>{ `Welcome back ${user.username}`}</h3>
+          <h3>{`Welcome back ${user.username}`}</h3>
         ) : (
           <div>
             <h3>Welcome to How.LK 🚀 </h3>{" "}
@@ -71,9 +71,11 @@ const Main = () => {
       </h1>
 
       <div className="content-container">
-        {admin && <Link to={"/addContent"} className="add-resources-link">
-          Add Resources
-        </Link>}
+        {admin && (
+          <Link to={"/addContent"} className="add-resources-link">
+            Add Resources
+          </Link>
+        )}
         {loading ? (
           <h1>Loading...</h1>
         ) : (
@@ -84,15 +86,8 @@ const Main = () => {
                 data.map((x) => (
                   <div key={x._id} className="featured-item">
                     <Link to={`/read/${x.heading}`}>{x.heading}</Link>
-                    <p className="pre-desc">{x.preDesc}</p>
-                    <ul className="content-list">
-                      {x.content.map((item, index) => (
-                        <li key={index}>{item}</li>
-                      ))}
-                    </ul>
-                    <p className="post-desc">{x.postDesc}</p>
+                    <p className="mini-desc">{x.miniDesc}</p>
                     <p className="category">{x.category}</p>
-                    {/* <Link to={`/search/${x.heading}`}>{`Click here to learn about ${x.heading}`}</Link> */}
                   </div>
                 ))
               ) : (
@@ -103,17 +98,10 @@ const Main = () => {
               <h2>Side Hustles</h2>
               {data2 && data2.length ? (
                 data2.map((item, index) => (
-                  <div key={index} className="side-hustle-item">
+                  <div key={item._id} className="featured-item">
                     <Link to={`/read/${item.heading}`}>{item.heading}</Link>
-                    <p className="pre-desc">{item.preDesc}</p>
-                    <ul className="content-list">
-                      {item.content.map((x, index) => (
-                        <li key={index}>{x}</li>
-                      ))}
-                    </ul>
-                    <p className="post-desc">{item.postDesc}</p>
+                    <p className="mini-desc">{item.miniDesc}</p>
                     <p className="category">{item.category}</p>
-                    {/* <Link to={`/search/${item.heading}`}>{`Click here to learn about ${item.heading}`}</Link> */}
                   </div>
                 ))
               ) : (

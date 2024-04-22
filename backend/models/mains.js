@@ -6,22 +6,11 @@ const mainSchema = new mongoose.Schema({
     min: 5,
     trim: true,
   },
-  preDesc: {
-    type: String,
-    required: true,
-    min: 5,
-    trim: true,
-  },
-  content: {
-    type: Array,
-    default: [String],
-  },
-  postDesc: {
-    type: String,
-    required: true,
-    min: 5,
-    trim: true,
-  },
+ miniDesc:{
+  type:String,
+  default:"",
+  trim:true,
+ },
   category:{
     type: String,
     required: true,
@@ -32,7 +21,7 @@ const mainSchema = new mongoose.Schema({
   niche:{
     //we should allow for niche implementation but for now it's fine
   }
-});
+},{timestamps:true});
 
 const mainModel = mongoose.model("mains",mainSchema);
 module.exports = mainModel;

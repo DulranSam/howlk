@@ -13,7 +13,7 @@ const Read = () => {
   async function fetchMore() {
     try {
       setLoading(true);
-      await Axios.post(`${BASE}/more`, more).then((response) => {
+      await Axios.post(`${BASE}/mains/read`, more).then((response) => {
         if (response.status === 200) {
           setGotBack(response.data);
         } else if (response.status === 404) {
@@ -33,11 +33,24 @@ const Read = () => {
     <div>
       <h1>{more}</h1>
       <div className="container">
-        {gotBack && gotBack.length ? (
-          JSON.stringify(gotBack)
-        ) : (
-          <h1>No results found</h1>
-        )}
+      {gotBack && gotBack.length ? (
+                gotBack.map((x) => (
+                  <div key={x._id} className="featured-item">
+                    <Link to={`/read/${x.heading}`}>{x.heading}</Link>
+                    <p className="pre-desc">{x.preDesc}</p>
+                    <ul className="content-list">
+                      {x.content.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                    <p className="post-desc">{x.postDesc}</p>
+                    <p className="category">{x.category}</p>
+                    {/* <Link to={`/search/${x.heading}`}>{`Click here to learn about ${x.heading}`}</Link> */}
+                  </div>
+                ))
+              ) : (
+                <p>No results found!</p>
+              )}
       </div>
       {/* <p>{status}</p> */}
     </div>
