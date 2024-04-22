@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
     pfp:{
         type:String,
         default:""
+    },
+    admin:{
+        type:Boolean,
+        default:false,
     }
 },{timestamps:true})
 

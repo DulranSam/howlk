@@ -5,7 +5,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { loading, setLoading, status, setStatus, BASE, setUser,user, setIsLogged } =
+  const { loading, setLoading, status, setStatus, BASE, setUser,user, setIsLogged,setAdmin } =
     useContext(UserContext);
   const [creds, setCreds] = useState({ username: "", password: "" });
   const navigator = useNavigate();
@@ -18,6 +18,10 @@ const Login = () => {
         if (response.status === 200) {
           console.log(response.data.user.username);
           setUser(response?.data?.user);
+          if(response?.data?.admin===true){
+            setAdmin(true);
+          }
+     
           setIsLogged(true);
           setStatus(`${user.username} Logged in!`)
         

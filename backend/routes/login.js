@@ -20,7 +20,7 @@ Router.route("/").post(async (req, res) => {
     // const passwordMatch = await ComparePasswords(password, user.password);
     const passwordMatch = bcrypt.compareSync(password,user.password)
     if (passwordMatch) {
-      return res.status(200).json({ user });
+      return res.status(200).json({ user , admin: user.admin});
     } else {
       return res.status(401).json({ Alert: "Unauthorized" });
     }
