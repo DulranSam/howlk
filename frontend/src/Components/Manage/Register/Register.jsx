@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../App";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,34 +7,38 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
   const { loading, setLoading, status, setStatus, BASE, setIsLogged } =
     useContext(UserContext);
-  const [creds, setCreds] = useState({ username: "", password: "" });
+  const [creds, setCreds] = useState({
+    username: "",
+    password: "",
+    admin: false,
+  });
+
+  useEffect(()=>{
+    console.log(`${creds.admin ? "Admin" : "Not"}`)
+  },[creds.admin])
+
   const navigator = useNavigate();
 
   async function userRegister(e) {
     e.preventDefault();
     try {
       setLoading(true);
-      await Axios.post(`${BASE}/register`, creds).then((response) => {
-        if (response.status === 201) {
-        
-          setStatus("Registration Complete , Please login to continue!")
-          setTimeout(()=>{
-            navigator("/login");
-            setStatus("")
-          },1200)
-        }
-      });
-    } catch (err) {
-      if (err.status === 404) {
-        setStatus("Wrong Credentials");
-      } else {
-        setStatus("Error");
+      const response = await Axios.post(`${BASE}/register`, { creds });
+      if (response.status === 201) {
+        setStatus("Registration Complete, Please login to continue!");
+        setTimeout(() => {
+          navigator("/login");
+          setStatus("");
+        }, 1200);
       }
+    } catch (err) {
+      setStatus("Error registering user");
       console.error(err);
     } finally {
       setLoading(false);
     }
   }
+  
 
   const handleChange = (e) => {
     setCreds({ ...creds, [e.target.name]: e.target.value });
@@ -55,6 +59,16 @@ const Register = () => {
             name="password"
             placeholder="Enter password..."
           ></input>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setCreds({ ...creds, admin: !creds.admin });
+            }}
+            disabled={loading}
+          >
+            {creds.admin ? <h2>Not an admin</h2> : <h1>Admin</h1>}
+          </button>
+
           <button type="submit" disabled={loading}>
             Register
           </button>

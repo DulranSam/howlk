@@ -5,24 +5,19 @@ import { UserContext } from "../../App";
 import Axios from "axios";
 
 const Read = () => {
-  const { loading, setLoading, status, setStatus, BASE } =
-    useContext(UserContext);
+  const { loading, setLoading, BASE } = useContext(UserContext);
   const { more } = useParams();
-  const [gotBack, setGotBack] = useState([]);
+  const [data, setData] = useState({});
 
   async function fetchMore() {
     try {
       setLoading(true);
-      await Axios.post(`${BASE}/mains/read`, more).then((response) => {
-        if (response.status === 200) {
-          console.log(response.data);
-          setGotBack(response.data);
-        } else if (response.status === 404) {
-          setGotBack([]);
-        } else {
-          setStatus("Error!");
-        }
-      });
+      const response = await Axios.post(`${BASE}/mains/read`, { more });
+      if (response.status === 200) {
+        console.log(response.data);
+        setData(response.data);
+
+      }
     } catch (err) {
       console.error(err);
     } finally {
@@ -36,36 +31,34 @@ const Read = () => {
 
   return (
     <div>
-      <h1>{more}</h1>
       <div className="container">
         {loading ? (
           <h1>Loading...</h1>
         ) : (
           <div>
-            {gotBack && gotBack.length ? (
-              gotBack.map((x) => (
-                <div key={x._id} className="featured-item">
-                  <Link to={`/read/${x.heading}`}>{x.heading}</Link>
-                  <p className="pre-desc">{x.preDesc}</p>
-                  <ul className="content-list">
-                    {x.content.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                  <p className="post-desc">{x.postDesc}</p>
-                  <p className="category">{x.category}</p>
-                  {/* <Link to={`/search/${x.heading}`}>{`Click here to learn about ${x.heading}`}</Link> */}
-                </div>
-              ))
+            {data ? (
+              <div key={data._id} className="featured-item">
+                <h1>{data.heading}</h1>
+                <p className="pre-desc">{data.preDesc}</p>
+                {/* <ul className="content-list">
+                  {data.content.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul> */}
+                <p className="post-desc">{data.postDesc}</p>
+                {/* <p className="category">{data.category}</p> */}
+              </div>
             ) : (
               <p>No results found!</p>
             )}
           </div>
         )}
+     
       </div>
-      {/* <p>{status}</p> */}
     </div>
   );
+  
+  
 };
 
 export default Read;

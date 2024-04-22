@@ -9,7 +9,7 @@ const SpecificCourse = () => {
   const { loading, setLoading, BASE, status, setStatus } = useContext(
     UserContext
   );
-  const [courseData, setCourseData] = useState([]);
+  const [courseData, setCourseData] = useState({});
   const [videoPlayer, setVideoPlayer] = useState(null);
 
   async function SpecificallyCourses() {

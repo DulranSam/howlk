@@ -13,29 +13,23 @@ const Login = () => {
   async function userLogin(e) {
     e.preventDefault();
     try {
+      setStatus("");
       setLoading(true);
-      await Axios.post(`${BASE}/login`, creds).then((response) => {
-        if (response.status === 200) {
-          console.log(response.data.user.username);
-          setUser(response?.data?.user);
-          if(response?.data?.admin===true){
-            setAdmin(true);
-          }
-     
-          setIsLogged(true);
-          setStatus(`${user.username} Logged in!`)
-        
-          setTimeout(()=>{
-            navigator("/");
-          },1200);
-        }else if (response.status === 404) {
-          setStatus("Wrong Credentials");
-        } else {
-          setStatus("Error");
+      const response = await Axios.post(`${BASE}/login`, creds);
+      if (response.status === 200) {
+        console.log(response.data.user.username);
+        setUser(response?.data?.user);
+        if (response?.data?.admin === true) {
+          setAdmin(true);
         }
-      });
+        setIsLogged(true);
+        setStatus(`${response.data.user.username} Logged in!`);
+        setTimeout(() => {
+          navigator("/")
+        }, 1200);
+      }
     } catch (err) {
-      if (err.status === 404) {
+      if (err.response && err.response.status === 401) {
         setStatus("Wrong Credentials");
       } else {
         setStatus("Error");
@@ -45,6 +39,7 @@ const Login = () => {
       setLoading(false);
     }
   }
+  
 
   const handleChange = (e) => {
     setCreds({ ...creds, [e.target.name]: e.target.value });

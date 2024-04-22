@@ -1,7 +1,7 @@
 const express = require("express");
 const Router = express.Router();
 const coursesModel = require("../models/courses");
-const theCourse = require("../models/theCourse");
+
 
 Router.route("/").get(async (req, res) => {
   try {
@@ -22,9 +22,9 @@ Router.route("/theCourse").post(async (req, res) => {
   if (!theID) return res.status(400).json({ Alert: "ID Required" });
 
   try {
-    const data = await theCourse.aggregate([{$match:{title:theID}}]);
+    const data = await coursesModel.aggregate([{$match:{title:theID}}]);
     if (data && data.length > 0) {
-      res.status(200).json(data[0]);
+      res.status(200).json(data);
     } else {
       res.status(404).json({ Alert: "Data not found" });
       console.log(`No data found`)

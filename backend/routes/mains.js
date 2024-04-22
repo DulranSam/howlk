@@ -61,10 +61,11 @@ Router.route("/adds").post(async (req, res) => {
 
 Router.route("/read").post(async (req, res) => {
   const { more } = req.body;
+  console.log(more);
   if(!more) return res.status(400).json({Alert:"SEARCH FIELD REQUIRED"})
   try {
     const data = await readMore.findOne({ heading: more });
-    if (data && data.length) {
+    if (data) {
       return res.status(200).json(data);
     } else {
       return res.status(404).json({ Alert: "No results found" });

@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt")
 Router.route("/").post(async (req, res) => {
   const { username, password , admin} = req.body; // Removed optional chaining, it's unnecessary here
   if (!username || !password || !admin)
-    return res.status(400).json({ Alert: "Username and password required" });
+    return res.status(400).json({ Alert: "Username and password AND ADMIN required" });
 
   try {
     // Check if username is already taken
