@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import "./Main.css";
 
 const Main = () => {
-  const { loading, setLoading, BASE, status, setStatus,admin } = useContext(UserContext);
+  const { loading, setLoading, BASE, status, setStatus, admin, user } =
+    useContext(UserContext);
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
 
@@ -53,10 +54,26 @@ const Main = () => {
 
   return (
     <div className="container">
-             
-      <h1 className="title">Welcome to How.LK</h1>
+      <h1 className="title">
+        {user?.username ? (
+          `Welcome back ${user.username}`
+        ) : (
+          <div>
+            <h3>Welcome to How.LK 🚀 </h3>{" "}
+            <div className="our-goal">
+              <p>
+                Our goal is to bring light to undiscovered ways of making extra
+                💸 and spread awareness!
+              </p>
+            </div>
+          </div>
+        )}
+      </h1>
+
       <div className="content-container">
-      <Link to={ admin && "/addContent"} className="add-resources-link">Add Resources</Link>
+        <Link to={admin && "/addContent"} className="add-resources-link">
+          Add Resources
+        </Link>
         {loading ? (
           <h1>Loading...</h1>
         ) : (
@@ -106,7 +123,6 @@ const Main = () => {
           </div>
         )}
         {/* <p>{status}</p> */}
- 
       </div>
     </div>
   );

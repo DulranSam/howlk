@@ -14,6 +14,8 @@ import Navbar from "./Components/Nav/Navbar";
 import SpecificCourse from "./Components/Courses/SpecificCourse";
 import SearchWithin from "./Components/Search/SearchWithin";
 import SearchedUp from "./Components/Search/SearchedUp";
+import Login from "./Components/Manage/Login/Login";
+import Register from "./Components/Manage/Register/Register";
 export const UserContext = createContext();
 
 function App() {
@@ -22,7 +24,8 @@ function App() {
   const [user, setUser] = useState({});
   const [isLogged, setIsLogged] = useState(true);
   const [toggle, setToggle] = useState(false);
-  const [admin,setAdmin]  =useState(true)
+  const [admin, setAdmin] = useState(true);
+
 
   const BASE = "http://localhost:8000";
 
@@ -38,7 +41,8 @@ function App() {
     setIsLogged,
     toggle,
     setToggle,
-    admin,setAdmin
+    admin,
+    setAdmin,
   };
 
   return (
@@ -46,7 +50,7 @@ function App() {
       <UserContext.Provider value={theStates}>
         <BrowserRouter>
           <Search />
-          <SearchWithin/>
+          <SearchWithin />
           <Navbar />
           <Routes>
             <Route path="/" element={<Main />}></Route>
@@ -58,10 +62,9 @@ function App() {
               path="/courses/:theCourse"
               element={<SpecificCourse />}
             ></Route>
-                <Route
-              path="/searched/:within"
-              element={<SearchedUp />}
-            ></Route>
+            <Route path="/login" element={!isLogged && <Login/>}></Route>
+            <Route path="/register" element={!isLogged && <Register/>}></Route>
+            <Route path="/searched/:within" element={<SearchedUp />}></Route>
             <Route path="/addcourses" element={<AddCourses />}></Route>
             <Route path="*" element={<Unknown />}></Route>
           </Routes>
