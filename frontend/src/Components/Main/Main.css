@@ -17,10 +17,11 @@
   
   .featured,
   .side-hustles {
-    margin-bottom: 40px;
+
     border:12px solid rebeccapurple;
     border-radius: 12px;
- 
+    padding:60px;
+
   }
   
 .featured-item,

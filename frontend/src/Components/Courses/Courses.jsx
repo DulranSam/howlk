@@ -5,7 +5,7 @@ import { UserContext } from "../../App";
 import { Link } from "react-router-dom";
 
 const Courses = () => {
-  const { loading, setLoading, status, setStatus, BASE,admin } = useContext(UserContext);
+  const { loading, setLoading, status, setStatus, BASE,admin,isLogged } = useContext(UserContext);
   const [resources, setResources] = useState([]);
 
   async function fetchCourses() {
@@ -30,7 +30,7 @@ const Courses = () => {
     fetchCourses();
   }, []);
 
-  return (
+  return isLogged ? (
     <div style={{ margin: "40px" }}>
       <h1>Courses</h1>
       {loading ? (
@@ -54,7 +54,7 @@ const Courses = () => {
         </div>
       )}
     </div>
-  );
+  ) : <div className="login"><Link to={"/login"}>Please Login to Continue!</Link></div>;
 };
 
 export default Courses;

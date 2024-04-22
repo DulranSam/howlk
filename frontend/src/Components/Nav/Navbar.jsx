@@ -41,12 +41,9 @@ const Navbar = () => {
             <li>
               <Link to={"/register"}>Register</Link>
             </li>
-       
           </div>
-          
         )}
-
-<li>
+        <li>
           <Link to={"/courses"}>Courses</Link>
         </li>
       </ul>

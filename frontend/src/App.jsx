@@ -59,7 +59,7 @@ function App() {
             <Route path="/read/:more" element={<Read />}></Route>
             <Route path="/search/:search" element={<IDWise />}></Route>
             <Route path="/addContent" element={<AddContent />}></Route>
-            <Route path="/courses" element={isLogged && <Courses />}></Route>
+            <Route path="/courses" element={<Courses />}></Route>
             <Route
               path="/courses/:theCourse"
               element={<SpecificCourse />}
