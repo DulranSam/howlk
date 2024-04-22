@@ -12,6 +12,11 @@ const readMore = new mongoose.Schema({
     min: 5,
     trim: true,
   },
+  miniDesc:{
+    type:String,
+    default:"",
+    trim:true,
+   },
   content: {
     type: Array,
     default: [String],
@@ -34,5 +39,5 @@ const readMore = new mongoose.Schema({
   }
 });
 
-const readModel = mongoose.model("reads",readMore);
+const readModel = mongoose.model("starters",readMore);
 module.exports = readModel;

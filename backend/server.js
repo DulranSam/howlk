@@ -8,7 +8,6 @@ app.use(express.json());
 app.use(cors({ origin: "*" }));
 
 app.use("/mains", require("./routes/mains"));
-app.use("/starters", require("./routes/starters"));
 app.use("/courses", require("./routes/courses"));
 app.use("/search",require("./routes/search"))
 app.use("/login",require("./routes/login"))

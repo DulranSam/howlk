@@ -87,7 +87,7 @@ const Main = () => {
                   <div key={x._id} className="featured-item">
                     <Link to={`/read/${x.heading}`}>{x.heading}</Link>
                     <p className="mini-desc">{x.miniDesc}</p>
-                    <p className="category">{x.category}</p>
+                    {/* <p className="category">{x.category}</p> */}
                   </div>
                 ))
               ) : (
@@ -101,7 +101,7 @@ const Main = () => {
                   <div key={item._id} className="featured-item">
                     <Link to={`/read/${item.heading}`}>{item.heading}</Link>
                     <p className="mini-desc">{item.miniDesc}</p>
-                    <p className="category">{item.category}</p>
+                    {/* <p className="category">{item.category}</p> */}
                   </div>
                 ))
               ) : (

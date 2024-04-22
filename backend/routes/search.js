@@ -3,7 +3,7 @@ const Router = express.Router();
 require("dotenv").config();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const geminiKey = process.env.GEMINI_KEY;
-const mainModel = require("../models/mains")
+const mainModel = require("../models/readMore")
 
 Router.route("/:search").post(async (req, res) => {
   const { search } = req?.params;

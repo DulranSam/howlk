@@ -1,11 +1,10 @@
 const express = require("express");
 const Router = express.Router();
-const mainModel = require("../models/mains");
 const readMore = require("../models/readMore");
 
 Router.route("/").get(async (req, res) => {
   try {
-    const theData = await mainModel.find({
+    const theData = await readMore.find({
       category: "main",
     });
     if (theData && theData.length) {
@@ -20,7 +19,7 @@ Router.route("/").get(async (req, res) => {
 
 Router.route("/sides").get(async (req, res) => {
   try {
-    const theData = await mainModel.find({
+    const theData = await readMore.find({
       category: "side",
     });
     if (theData && theData.length) {
@@ -34,16 +33,16 @@ Router.route("/sides").get(async (req, res) => {
 });
 
 Router.route("/adds").post(async (req, res) => {
-  const { heading, preDesc, content, postDesc, category } = req?.body;
+  const { heading, preDesc, content, postDesc, category,miniDesc } = req?.body;
 
-  if (!heading || !preDesc || !content || !postDesc || !category) {
+  if (!heading || !preDesc || !content || !postDesc || !category || !miniDesc) {
     return res.status(400).json({ Alert: "MISSING REQUIRED DATA" });
   } else {
     try {
       //needs to fetch from mains model
-      const conflictHeading = await mainModel.findOne({ heading });
+      const conflictHeading = await readMore.findOne({ heading });
       if (!conflictHeading) {
-        await mainModel.create({
+        await readMore.create({
           heading,
           preDesc,
           content,
@@ -62,8 +61,9 @@ Router.route("/adds").post(async (req, res) => {
 
 Router.route("/read").post(async (req, res) => {
   const { more } = req.body;
+  if(!more) return res.status(400).json({Alert:"SEARCH FIELD REQUIRED"})
   try {
-    const data = await readMore.findOne({ title: more });
+    const data = await readMore.findOne({ heading: more });
     if (data && data.length) {
       return res.status(200).json(data);
     } else {
@@ -81,7 +81,7 @@ Router.route("/:search").post(async (req, res) => {
   if (!theSearch) return res.status(400).json({ Alert: "ID required" });
 
   try {
-    const theRequest = await mainModel.aggregate([
+    const theRequest = await readMore.aggregate([
       { $match: theSearch }, // Replace fieldName with the actual field name you want to match against
     ]);
     if (theRequest.length > 0) {

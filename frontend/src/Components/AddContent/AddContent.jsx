@@ -11,6 +11,7 @@ const AddContent = () => {
     heading: "",
     preDesc: "",
     content: [],
+    miniDesc:"",
     postDesc: "",
     category: "main",
   });
@@ -86,6 +87,12 @@ const AddContent = () => {
               onChange={handleChange}
               name="preDesc"
               placeholder="Enter Pre Description"
+              type="text"
+            ></input>
+              <input
+              onChange={handleChange}
+              name="miniDesc"
+              placeholder="Enter Mini Desc..."
               type="text"
             ></input>
             {fields.content.map((point, index) => (
