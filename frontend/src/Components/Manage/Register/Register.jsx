@@ -5,7 +5,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { loading, setLoading, status, setStatus, BASE } =
+  const { loading, setLoading, status, setStatus, BASE, setIsLogged } =
     useContext(UserContext);
   const [creds, setCreds] = useState({ username: "", password: "" });
   const navigator = useNavigate();
@@ -16,8 +16,11 @@ const Register = () => {
       setLoading(true);
       await Axios.post(`${BASE}/register`, creds).then((response) => {
         if (response.status === 200) {
-          navigator("/login");
+          setIsLogged(true);
           setStatus("Registration Complete , Please login to continue!")
+          setTimeout(()=>{
+            navigator("/login");
+          },1200)
         }
       });
     } catch (err) {

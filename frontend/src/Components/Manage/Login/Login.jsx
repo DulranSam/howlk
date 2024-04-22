@@ -5,7 +5,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { loading, setLoading, status, setStatus, BASE, setUser } =
+  const { loading, setLoading, status, setStatus, BASE, setUser,user, setIsLogged } =
     useContext(UserContext);
   const [creds, setCreds] = useState({ username: "", password: "" });
   const navigator = useNavigate();
@@ -17,7 +17,11 @@ const Login = () => {
       await Axios.post(`${BASE}/login`, creds).then((response) => {
         if (response.status === 200) {
           setUser(response.data);
-          navigator("/");
+          setIsLogged(true);
+          setStatus(`${user.username} Logged in!`)
+          setTimeout(()=>{
+            navigator("/");
+          },1200);
         }
       });
     } catch (err) {

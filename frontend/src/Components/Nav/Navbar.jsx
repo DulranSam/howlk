@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useContext } from "react";
 import { UserContext } from "../../App";
 
 const Navbar = () => {
-  const { admin } = useContext(UserContext);
+  const { admin, isLogged } = useContext(UserContext);
 
   return admin ? (
     <div className="nav">
@@ -32,10 +33,13 @@ const Navbar = () => {
         <li>
           <Link to={"/"}>Home</Link>
         </li>
-        {/* <li>
-          <Link to={"/starters"}>Starters</Link>
-        </li> */}
-      
+        <li>
+          <Link to={"/login"}>Login</Link>
+        </li>
+        <li>
+          <Link to={"/register"}>Register</Link>
+        </li>
+
         <li>
           <Link to={"/courses"}>Courses</Link>
         </li>
