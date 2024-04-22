@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -7,9 +6,11 @@ import Axios from "axios";
 
 const SpecificCourse = () => {
   const { theCourse } = useParams();
-  const { loading, setLoading, BASE, status, setStatus } =
-    useContext(UserContext);
+  const { loading, setLoading, BASE, status, setStatus } = useContext(
+    UserContext
+  );
   const [courseData, setCourseData] = useState([]);
+  const [videoPlayer, setVideoPlayer] = useState(null);
 
   async function SpecificallyCourses() {
     try {
@@ -37,14 +38,43 @@ const SpecificCourse = () => {
     SpecificallyCourses();
   }, []);
 
+  // Function to play or pause the video
+  const togglePlayPause = () => {
+    if (videoPlayer.paused) {
+      videoPlayer.play();
+    } else {
+      videoPlayer.pause();
+    }
+  };
+
   return (
     <div>
-      <div className="sub">
-        {loading &&  <h1>Loading...</h1> }
-      </div>
+      <div className="sub">{loading && <h1>Loading...</h1>}</div>
+      <h1>{theCourse}</h1>
       <div className="container">
         {courseData && courseData.length ? (
-         <div>{JSON.stringify(courseData)}</div> 
+          <div>
+            <div className="side">
+              <span>
+                <label>{courseData.title}</label>
+                <label>{courseData.description}</label>
+              </span>
+            </div>
+            <div className="video">
+              <video
+                ref={(ref) => setVideoPlayer(ref)}
+                controls
+                width="600"
+                height="400"
+              >
+                <source src={courseData.videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <button onClick={togglePlayPause}>
+                {videoPlayer && videoPlayer.paused ? "Play" : "Pause"}
+              </button>
+            </div>
+          </div>
         ) : (
           <h1>No results found</h1>
         )}
