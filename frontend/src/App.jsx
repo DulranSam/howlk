@@ -16,6 +16,7 @@ import SearchWithin from "./Components/Search/SearchWithin";
 import SearchedUp from "./Components/Search/SearchedUp";
 import Login from "./Components/Manage/Login/Login";
 import Register from "./Components/Manage/Register/Register";
+import Read from "./Components/Main/Read";
 export const UserContext = createContext();
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />}></Route>
             {/* <Route path="/starters" element={<Starters />}></Route> */}
+            <Route path="/read/:more" element={<Read />}></Route>
             <Route path="/search/:search" element={<IDWise />}></Route>
             <Route path="/addContent" element={<AddContent />}></Route>
             <Route path="/courses" element={isLogged && <Courses />}></Route>

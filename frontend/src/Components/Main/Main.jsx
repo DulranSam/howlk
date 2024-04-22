@@ -83,7 +83,7 @@ const Main = () => {
               {data && data.length ? (
                 data.map((x) => (
                   <div key={x._id} className="featured-item">
-                    <h3>{x.heading}</h3>
+                    <Link to={`/read/${x.heading}`}>{x.heading}</Link>
                     <p className="pre-desc">{x.preDesc}</p>
                     <ul className="content-list">
                       {x.content.map((item, index) => (
@@ -104,7 +104,7 @@ const Main = () => {
               {data2 && data2.length ? (
                 data2.map((item, index) => (
                   <div key={index} className="side-hustle-item">
-                    <h3>{item.heading}</h3>
+                    <Link to={`/read/${item.heading}`}>{item.heading}</Link>
                     <p className="pre-desc">{item.preDesc}</p>
                     <ul className="content-list">
                       {item.content.map((x, index) => (
