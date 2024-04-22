@@ -15,11 +15,12 @@ const Register = () => {
     try {
       setLoading(true);
       await Axios.post(`${BASE}/register`, creds).then((response) => {
-        if (response.status === 200) {
-          setIsLogged(true);
+        if (response.status === 201) {
+        
           setStatus("Registration Complete , Please login to continue!")
           setTimeout(()=>{
             navigator("/login");
+            setStatus("")
           },1200)
         }
       });

@@ -56,7 +56,7 @@ const Main = () => {
     <div className="container">
       <h1 className="title">
         {user?.username ? (
-          `Welcome back ${user.username}`
+         <h3>{ `Welcome back ${user.username}`}</h3>
         ) : (
           <div>
             <h3>Welcome to How.LK 🚀 </h3>{" "}

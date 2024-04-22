@@ -24,6 +24,10 @@ const Login = () => {
           setTimeout(()=>{
             navigator("/");
           },1200);
+        }else if (response.status === 404) {
+          setStatus("Wrong Credentials");
+        } else {
+          setStatus("Error");
         }
       });
     } catch (err) {
