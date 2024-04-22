@@ -26,7 +26,7 @@ const SearchWithin = () => {
 
   return (
     <div>
-      <h1>Search Within</h1>
+    
       <form onSubmit={SearchWithin}>
         <input
           onChange={(e) => {
