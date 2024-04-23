@@ -12,6 +12,17 @@ const userSchema = new mongoose.Schema({
         min:5,
         max:20,
     },
+    mail:{
+        type:String,
+        trim:true,
+        min:5,
+        max:20,
+    },
+    signedUpFor:{
+        type:[String],
+        min:5,
+        max:20,
+    },
     pfp:{
         type:String,
         default:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2Fdark-pfp--921549142481701997%2F&psig=AOvVaw0mjTDgsQFazIb6tAklWZH8&ust=1713847814428000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMCP7OKC1YUDFQAAAAAdAAAAABAE"

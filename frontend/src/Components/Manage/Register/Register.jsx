@@ -10,6 +10,7 @@ const Register = () => {
   const [creds, setCreds] = useState({
     username: "",
     password: "",
+    mail:"",
     admin: false,
   });
 
@@ -58,6 +59,11 @@ const Register = () => {
             onChange={handleChange}
             name="password"
             placeholder="Enter password..."
+          ></input>
+          <input
+            onChange={handleChange}
+            name="mail"
+            placeholder="Enter mail..."
           ></input>
           <button
             onClick={(e) => {
