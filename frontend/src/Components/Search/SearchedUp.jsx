@@ -22,6 +22,8 @@ const SearchedUp = () => {
     } catch (err) {
       if (err.status === 404) {
         setStatus("No results found");
+      }else{
+        setStatus("Error")
       }
       console.error(err);
     } finally {

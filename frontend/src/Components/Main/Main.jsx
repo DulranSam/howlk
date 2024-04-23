@@ -59,7 +59,7 @@ const Main = () => {
           <h3>{`Welcome back ${user.username}`}</h3>
         ) : (
           <div>
-            <h3>Welcome to How.LK 🚀 </h3>{" "}
+            <h3>Welcome to Hustle.LK 🚀 </h3>{" "}
             <div className="our-goal">
               <p>
                 Our goal is to bring light to undiscovered ways of making extra
@@ -110,6 +110,8 @@ const Main = () => {
             </div>
           </div>
         )}
+      <div className="discord" style={{margin:"40px"}}>   {!user && <h1>Login to join our discord server 🚀</h1>}
+        <Link to={"https://discord.gg/y73z2Vjw"}>{user && `${`Click here to join the discord community 🚀`}`}</Link></div>
         {/* <p>{status}</p> */}
       </div>
     </div>

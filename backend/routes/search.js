@@ -35,7 +35,9 @@ Router.route("/:search").post(async (req, res) => {
 
 Router.route("/").post(async (req, res) => {
   const { within } = req.body;
+  console.log(within);
   if (!within) return res.status(400).json({ Alert: "Query required" });
+
   try {
     const response = await mainModel.aggregate([{ $match: within }]);
     if (response && response.length) {
