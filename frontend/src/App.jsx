@@ -25,7 +25,7 @@ function App() {
   const [user, setUser] = useState({});
   const [isLogged, setIsLogged] = useState(false);
   const [toggle, setToggle] = useState(false);
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(false);
 
 
   const BASE = "http://localhost:8000";

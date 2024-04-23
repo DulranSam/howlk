@@ -16,7 +16,6 @@ const Read = () => {
       if (response.status === 200) {
         console.log(response.data);
         setData(response.data);
-
       }
     } catch (err) {
       console.error(err);
@@ -40,15 +39,16 @@ const Read = () => {
               <div key={data._id} className="featured-item">
                 <h1>{data.heading}</h1>
                 <p className="pre-desc">{data.preDesc}</p>
+
                 {/* Render data.content if it's an array */}
-                {/* <ul className="content-list">
-                  {data.content.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul> */}
+                <div>
+                  {" "}
+                  <ul className="content-list">{data.content}</ul>
+                </div>
+
                 <p className="post-desc">{data.postDesc}</p>
                 {/* Render data.category if it's present */}
-                <p className="category">{data.category}</p>
+                <p className="category">{data.category==="main" ? "Main Hustle" : "Side Hustle"}</p>
               </div>
             ) : (
               <p>No results found!</p>
