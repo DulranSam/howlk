@@ -48,6 +48,7 @@ Router.route("/adds").post(async (req, res) => {
           content,
           postDesc,
           category,
+          miniDesc
         });
         return res.status(201).json({ Alert: `${heading} Added!` });
       } else {

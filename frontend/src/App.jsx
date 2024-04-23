@@ -25,7 +25,7 @@ function App() {
   const [user, setUser] = useState({});
   const [isLogged, setIsLogged] = useState(false);
   const [toggle, setToggle] = useState(false);
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
 
 
   const BASE = "http://localhost:8000";
@@ -58,7 +58,7 @@ function App() {
             {/* <Route path="/starters" element={<Starters />}></Route> */}
             <Route path="/read/:more" element={<Read />}></Route>
             <Route path="/search/:search" element={<IDWise />}></Route>
-            <Route path="/addContent" element={<AddContent />}></Route>
+            <Route path="/addContent" element={admin ? <AddContent /> : <Unknown/>}></Route>
             <Route path="/courses" element={<Courses />}></Route>
             <Route
               path="/courses/:theCourse"
