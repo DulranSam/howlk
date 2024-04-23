@@ -17,6 +17,7 @@ import SearchedUp from "./Components/Search/SearchedUp";
 import Login from "./Components/Manage/Login/Login";
 import Register from "./Components/Manage/Register/Register";
 import Read from "./Components/Main/Read";
+import Profile from "./Components/Profile/Profile";
 export const UserContext = createContext();
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
   const [user, setUser] = useState({});
   const [isLogged, setIsLogged] = useState(false);
   const [toggle, setToggle] = useState(false);
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(false);
 
 
   const BASE = "http://localhost:8000";
@@ -64,6 +65,7 @@ function App() {
               path="/courses/:theCourse"
               element={<SpecificCourse />}
             ></Route>
+            <Route path="/profile" element={<Profile/>}></Route>
             <Route path="/login" element={!isLogged && <Login/>}></Route>
             <Route path="/register" element={!isLogged && <Register/>}></Route>
             <Route path="/searched/:within" element={<SearchedUp />}></Route>
