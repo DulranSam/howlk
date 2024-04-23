@@ -49,7 +49,7 @@ const AddCourses = () => {
   };
  
   {/**Course system is complex leave for last */}
-  return isLogged ? (
+  return (
     <div style={{textAlign:"center"}}>
       <h1>Add Courses</h1>
       <form onSubmit={AddCourses}>
@@ -76,9 +76,7 @@ const AddCourses = () => {
       </form>
       <Link to={"/courses"}>Back to courses</Link>
     </div>
-  ) : (
-    "Please Login to continue"
-  );
+  ) 
 };
 
 export default AddCourses;

@@ -14,8 +14,9 @@ const SearchedUp = () => {
     try {
       //
       setLoading(true);
-      await Axios.post(`${BASE}/search`, within).then((response) => {
+      await Axios.post(`${BASE}/search`, {within}).then((response) => {
         if (response.status === 200) {
+          console.log(response.data)
           setResult(response.data);
         }
       });
@@ -40,7 +41,7 @@ const SearchedUp = () => {
     <div>
       <h1>Results</h1>
       {loading && <h1>Loading...</h1>}
-
+      <h2>{within} detect</h2>
       <div className="results" style={{ margin: "40px" }}>
         {result && result.length ? (
           JSON.stringify(result)

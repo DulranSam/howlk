@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../App";
 import Axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { loading, setLoading, status, setStatus, BASE, setIsLogged } =
@@ -80,6 +80,7 @@ const Register = () => {
           </button>
         </form>
         <h2>{status}</h2>
+        <Link to={"/login"}>Already an user?</Link>
       </div>
     </div>
   );

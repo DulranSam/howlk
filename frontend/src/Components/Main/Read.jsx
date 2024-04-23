@@ -37,6 +37,7 @@ const Read = () => {
           <div>
             {data ? (
               <div key={data._id} className="featured-item">
+                {/* <h2>{more} yup</h2> */}
                 <h1>{data.heading}</h1>
                 <p className="pre-desc">{data.preDesc}</p>
 

@@ -110,8 +110,8 @@ const Main = () => {
             </div>
           </div>
         )}
-      <div className="discord" style={{margin:"40px"}}>   {!user && <h1>Login to join our discord server 🚀</h1>}
-        <Link to={"https://discord.gg/y73z2Vjw"}>{user && `${`Click here to join the discord community 🚀`}`}</Link></div>
+      <div className="discord" style={{margin:"40px"}}>   <h1>{!user.username && <Link to={"/login"}>Login to join our discord server 🚀</Link>}</h1>
+        <Link to={"https://discord.gg/y73z2Vjw"}>{user.username && `${`Click here to join the discord community 🚀`}`}</Link></div>
         {/* <p>{status}</p> */}
       </div>
     </div>

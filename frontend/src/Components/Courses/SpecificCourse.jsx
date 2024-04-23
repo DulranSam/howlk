@@ -52,7 +52,7 @@ const SpecificCourse = () => {
       <div className="sub">{loading && <h1>Loading...</h1>}</div>
       <h1>{theCourse}</h1>
       <div className="container">
-        {courseData && courseData.length ? (
+      
           <div>
             <div className="side">
               <span>
@@ -75,9 +75,7 @@ const SpecificCourse = () => {
               </button>
             </div>
           </div>
-        ) : (
-          <h1>No results found</h1>
-        )}
+     
       </div>
     </div>
   );

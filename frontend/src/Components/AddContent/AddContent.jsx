@@ -131,7 +131,7 @@ const AddContent = () => {
             </button>
           </form>
         )}
-        {/* <h1>{status}</h1> */}
+        <h1>{status}</h1>
       </div>
     </div>
   );
