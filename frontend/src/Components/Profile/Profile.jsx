@@ -5,7 +5,7 @@ import { UserContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  const { loading, setLoading, status, setStatus,  user } =
+  const { loading, setLoading, status, setStatus,  user , setUser,setIsLogged} =
     useContext(UserContext);
   const navigator = useNavigate();
 
@@ -23,6 +23,9 @@ const Profile = () => {
     }
   }
 
+
+  async function LogOut(e){e.preventDefault();if(user.username){setUser({});setIsLogged(false);navigator("/")}}
+
   useEffect(() => {
     fetchMe();
   }, [user.username]);
@@ -36,6 +39,7 @@ const Profile = () => {
         {/* <p>{user.password}</p> */}
         <img src={user.pfp}></img>
       </div>
+      <button onClick={LogOut}>Log Out</button>
       {/* <p>{status}</p> */}
     </div>
   );

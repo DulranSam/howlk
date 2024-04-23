@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../../App";
 
 const Navbar = () => {
-  const { admin, isLogged } = useContext(UserContext);
+  const { admin, isLogged,user } = useContext(UserContext);
 
   return admin ? (
     <div className="nav">
@@ -45,7 +45,7 @@ const Navbar = () => {
           </div>
         )}
               <li>
-          <Link to={"/profile"}>Profile</Link>
+          <Link to={"/profile"}>{user.username && "Profile"}</Link>
         </li>
         <li>
           <Link to={"/courses"}>Courses</Link>
