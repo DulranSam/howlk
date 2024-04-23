@@ -55,19 +55,19 @@ const Main = () => {
   return (
     <div className="container">
       <h1 className="title">
-        {user?.username ? (
-          <h3>{`Welcome back ${user.username}`}</h3>
-        ) : (
-          <div>
-            <h3>Welcome to Hustle.LK 🚀 </h3>{" "}
-            <div className="our-goal">
-              <p>
-                Our goal is to bring light to undiscovered ways of making extra
-                💸 and spread awareness!
-              </p>
-            </div>
-          </div>
+        {user?.username && (
+          <h3>{`Welcome back ${user.username} 👋🏻`}</h3>
         )}
+         {!user.username ?  <div>
+         <h3>Welcome to Hustle.LK 🚀 </h3>
+         <div className="our-goal">
+           <p>
+             Our goal is to bring light to undiscovered ways of making extra
+             💸 and spread awareness!
+           </p>
+         </div>
+       </div> : <div><p>Continue where you left off 🐳</p></div>}
+       
       </h1>
 
       <div className="content-container">
