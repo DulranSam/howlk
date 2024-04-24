@@ -47,10 +47,11 @@ const AddContent = () => {
   async function uploadContent(e) {
     e.preventDefault();
     try {
+      setStatus("");
       setLoading(true);
       const response = await Axios.post(`${BASE}/mains/adds`, fields);
       if (response.status === 200) {
-        alert("Nice!");
+        setStatus(`Added ${fields.heading}!`)
         navigator("/");
       }
     } catch (err) {

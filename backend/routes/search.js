@@ -3,7 +3,8 @@ const Router = express.Router();
 require("dotenv").config();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const geminiKey = process.env.GEMINI_KEY;
-const mainModel = require("../models/readMore")
+// const mainModel = require("../models/readMore")
+const mongoose = require("mongoose");
 
 Router.route("/:search").post(async (req, res) => {
   const { search } = req?.params;
@@ -35,7 +36,7 @@ Router.route("/:search").post(async (req, res) => {
 
 Router.route("/").post(async (req, res) => {
   const { within } = req.body;
-  console.log(within)
+  console.log(within);
 
   // Check if 'within' field is provided in the request body
   if (!within) {
@@ -43,14 +44,28 @@ Router.route("/").post(async (req, res) => {
   }
 
   try {
-    // Perform MongoDB aggregation with the provided 'within' query
-    const response = await mainModel.aggregate([
-      { $match: { within } } // Replace 'fieldNameToMatch' with the actual field name
-    ]);
+    const db = mongoose.connection.db;
+
+    // Get a list of all collections in the database
+    const collections = await db.collections();
+
+    // Array to store aggregation results from each collection
+    const aggregatedResults = [];
+
+    // Iterate over each collection
+    for (let i = 0; i < collections.length; i++) {
+      const collection = collections[i];
+      // Perform MongoDB aggregation with the provided 'within' query for each collection
+      const response = await collection.aggregate([
+        { $match: { within } } // Replace 'within' with the actual query
+      ]).toArray(); // Convert cursor to array
+      // Push the aggregation results to the array
+      aggregatedResults.push(...response);
+    }
 
     // Check if there are results
-    if (response && response.length > 0) {
-      return res.status(200).json(response);
+    if (aggregatedResults.length > 0) {
+      return res.status(200).json(aggregatedResults);
     } else {
       return res.status(404).json({ Alert: "No results found" });
     }

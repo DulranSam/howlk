@@ -16,8 +16,10 @@ const AddCourses = () => {
   } = useContext(UserContext);
   const [courseRelated, setCourseRelated] = useState({
     title: "",
-    courses: "",
+    description: "",
     videoUrl: "",
+    videos: [],
+    rating: 0,
   });
 
   const navigator = useNavigate();
@@ -47,10 +49,12 @@ const AddCourses = () => {
   const handleChange = (e) => {
     setCourseRelated({ ...courseRelated, [e.target.name]: e.target.value });
   };
- 
-  {/**Course system is complex leave for last */}
+
+  {
+    /**Course system is complex leave for last */
+  }
   return (
-    <div style={{textAlign:"center"}}>
+    <div style={{ textAlign: "center" }}>
       <h1>Add Courses</h1>
       <form onSubmit={AddCourses}>
         <input
@@ -60,15 +64,21 @@ const AddCourses = () => {
         ></input>
         <input
           onChange={handleChange}
-          name="courses"
-          placeholder="Enter course name"
+          name="description"
+          placeholder="Enter description "
         ></input>
-        {/* <input
+        <input
           onChange={handleChange}
-          name="videoUrl"
+          name="videoUrL"
+          placeholder="Enter video URL "
+        ></input>
+        <input
+          onChange={handleChange}
+          name="videos"
           type="file"
-          placeholder="text"
-        ></input> */}
+          placeholder="Enter video URL "
+        ></input>
+
         <h1>Needs to allow users to add video courses</h1>
         <button type="submit" disabled={loading}>
           Add Resource!
@@ -76,7 +86,7 @@ const AddCourses = () => {
       </form>
       <Link to={"/courses"}>Back to courses</Link>
     </div>
-  ) 
+  );
 };
 
 export default AddCourses;

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../App";
@@ -9,10 +8,10 @@ const SpecificCourse = () => {
   const { loading, setLoading, BASE, status, setStatus } = useContext(
     UserContext
   );
-  const [courseData, setCourseData] = useState({});
+  const [courseData, setCourseData] = useState([]);
   const [videoPlayer, setVideoPlayer] = useState(null);
 
-  async function SpecificallyCourses() {
+  async function fetchCourseData() {
     try {
       setLoading(true);
       const response = await Axios.post(`${BASE}/courses/theCourse`, {
@@ -21,7 +20,6 @@ const SpecificCourse = () => {
       if (response.status === 200) {
         setCourseData(response.data);
         setStatus("Done!");
-        console.log(response.data);
       }
     } catch (err) {
       if (err.response && err.response.status === 404) {
@@ -35,7 +33,7 @@ const SpecificCourse = () => {
   }
 
   useEffect(() => {
-    SpecificallyCourses();
+    fetchCourseData();
   }, []);
 
   // Function to play or pause the video
@@ -50,14 +48,14 @@ const SpecificCourse = () => {
   return (
     <div>
       <div className="sub">{loading && <h1>Loading...</h1>}</div>
-      <h1>{theCourse}</h1>
+
       <div className="container">
-      
-          <div>
+        {courseData.map((course, index) => (
+          <div key={index}>
             <div className="side">
+              <h1>{course.title}</h1>
               <span>
-                <label>{courseData.title}</label>
-                <label>{courseData.description}</label>
+                <h2>{course.description}</h2>
               </span>
             </div>
             <div className="video">
@@ -67,7 +65,7 @@ const SpecificCourse = () => {
                 width="600"
                 height="400"
               >
-                <source src={courseData.videoUrl} type="video/mp4" />
+                <source src={course.videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               <button onClick={togglePlayPause}>
@@ -75,7 +73,8 @@ const SpecificCourse = () => {
               </button>
             </div>
           </div>
-     
+        ))}
+        <p>{status}</p>
       </div>
     </div>
   );

@@ -38,9 +38,9 @@ Router.route("/theCourse").post(async (req, res) => {
 });
 
 Router.route("/add").post(async (req, res) => {
-  const { title, courses, videoUrl } = req.body;
-  if (!title || !courses )
-    return res.status(400).json({ Alert: "Title, Courses Required!" });
+  const { title, description, videoUrl, videos } = req.body;
+  if (!title || !description || !videoUrl || !videos )
+    return res.status(400).json({ Alert: "Title, description Required!" });
 
   try {
     const conflict = await coursesModel.findOne({ title });

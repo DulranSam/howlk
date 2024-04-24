@@ -8,8 +8,7 @@ const courseSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    trim:true,
-    
+    trim:true, 
   },
   videoUrl: {
     type: String,
@@ -21,6 +20,8 @@ const courseSchema = new mongoose.Schema({
   },
   rating:{
     type:[Number],
+    min:1,
+    max:10,
     default:[]
   }
 });
