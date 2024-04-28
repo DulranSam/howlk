@@ -23,13 +23,13 @@ export const UserContext = createContext();
 function App() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
-  const [user, setUser] = useState({});
-  const [isLogged, setIsLogged] = useState(false);
+  const [user, setUser] = useState({username:"veloxal",password:"velo123"});
+  const [isLogged, setIsLogged] = useState(true);
   const [toggle, setToggle] = useState(false);
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(false);
 
 
-  const BASE = "http://localhost:8000";
+  const BASE = "http://localhost:5000";
 
   const theStates = {
     loading,

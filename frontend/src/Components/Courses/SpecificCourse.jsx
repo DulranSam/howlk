@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../App";
@@ -51,7 +52,7 @@ const SpecificCourse = () => {
 
       <div className="container">
         {courseData.map((course, index) => (
-          <div key={index}>
+          <div key={course._id}>
             <div className="side">
               <h1>{course.title}</h1>
               <span>

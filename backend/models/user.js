@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     },
     pfp:{
         type:String,
-        default:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2Fdark-pfp--921549142481701997%2F&psig=AOvVaw0mjTDgsQFazIb6tAklWZH8&ust=1713847814428000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMCP7OKC1YUDFQAAAAAdAAAAABAE"
+        default:"https://i.pinimg.com/736x/a3/31/a8/a331a8d0a8ff50827c6cb3437f336a30.jpg"
     },
     admin:{
         type:Boolean,

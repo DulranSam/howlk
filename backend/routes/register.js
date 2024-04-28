@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt")
 Router.route("/").post(async (req, res) => {
   const { username, password , mail } = req.body; // Removed optional chaining, it's unnecessary here
   if (!username || !password )
-    return res.status(400).json({ Alert: "Username and password AND ADMIN required" });
+    return res.status(400).json({ Alert: "Username and password required" });
 
   try {
     // Check if username is already taken
@@ -20,7 +20,7 @@ Router.route("/").post(async (req, res) => {
       const hashPWD = bcrypt.hashSync(password,Math.random());
 
       // Create the new user
-      const newUser = await userModel.create({ username, password: hashPWD,admin,mail });
+      const newUser = await userModel.create({ username, password: hashPWD,mail });
       
       // Respond with success message
       return res.status(201).json({ Alert: `${newUser.username} Created` });

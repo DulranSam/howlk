@@ -5,7 +5,8 @@ import { UserContext } from "../../App";
 import { Link } from "react-router-dom";
 
 const Courses = () => {
-  const { loading, setLoading, status, setStatus, BASE,admin,isLogged } = useContext(UserContext);
+  const { loading, setLoading, status, setStatus, BASE, admin, isLogged } =
+    useContext(UserContext);
   const [resources, setResources] = useState([]);
 
   async function fetchCourses() {
@@ -21,7 +22,7 @@ const Courses = () => {
         setStatus("No results found!");
       }
       console.error(err);
-    }finally{
+    } finally {
       setLoading(false);
     }
   }
@@ -37,14 +38,20 @@ const Courses = () => {
         <h1>Loading...</h1>
       ) : (
         <div>
-                  {admin &&  <Link to={"/addcourses"}>Add Courses</Link>}
+          {admin && <Link to={"/addcourses"}>Add Courses</Link>}
           <div className="data">
             {resources && resources.length > 0 ? (
               resources.map((x) => (
-                <div key={x._id} className="comp" style={{margin:"40px",paddingTop:"60px"}}>
+                <div
+                  key={x._id}
+                  className="comp"
+                  style={{ margin: "40px", paddingTop: "60px" }}
+                >
                   <h1>{x.title}</h1>
                   <h2>{x.description}</h2>
-                  <Link to={`/courses/${x.title}`}>{`Learn more about ${x.title}`}</Link>
+                  <Link
+                    to={`/courses/${x.title}`}
+                  >{`Learn more about ${x.title}`}</Link>
                 </div>
               ))
             ) : (
@@ -54,7 +61,11 @@ const Courses = () => {
         </div>
       )}
     </div>
-  ) : <div className="login"><Link to={"/login"}>Please Login to Continue!</Link></div>;
+  ) : (
+    <div className="login">
+      <Link to={"/login"}>Please Login to Continue!</Link>
+    </div>
+  );
 };
 
 export default Courses;

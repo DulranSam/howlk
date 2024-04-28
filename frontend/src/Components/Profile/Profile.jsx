@@ -34,6 +34,7 @@ const Profile = () => {
 
   useEffect(() => {
     fetchMe();
+    console.log(user);
   }, [user.username]);
 
   return (
